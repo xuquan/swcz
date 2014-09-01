@@ -32,20 +32,21 @@ public final class R {
         public static final int icon_more_sel=0x7f020007;
         public static final int icon_selfinfo_nor=0x7f020008;
         public static final int icon_selfinfo_sel=0x7f020009;
-        public static final int icon_square_nor=0x7f02000a;
-        public static final int icon_square_sel=0x7f02000b;
-        public static final int maintab_toolbar_bg=0x7f02000c;
-        public static final int messagescenter_notice=0x7f02000d;
-        public static final int selector_tab_background=0x7f02000e;
-        public static final int tab_home_btn=0x7f02000f;
-        public static final int tab_message_btn=0x7f020010;
-        public static final int tab_more_btn=0x7f020011;
-        public static final int tab_selfinfo_btn=0x7f020012;
-        public static final int tab_square_btn=0x7f020013;
-        public static final int xianjian01=0x7f020014;
-        public static final int xianjian02=0x7f020015;
-        public static final int xianjian03=0x7f020016;
-        public static final int xianjian04=0x7f020017;
+        public static final int icon_ship=0x7f02000a;
+        public static final int icon_square_nor=0x7f02000b;
+        public static final int icon_square_sel=0x7f02000c;
+        public static final int maintab_toolbar_bg=0x7f02000d;
+        public static final int messagescenter_notice=0x7f02000e;
+        public static final int selector_tab_background=0x7f02000f;
+        public static final int tab_home_btn=0x7f020010;
+        public static final int tab_message_btn=0x7f020011;
+        public static final int tab_more_btn=0x7f020012;
+        public static final int tab_selfinfo_btn=0x7f020013;
+        public static final int tab_square_btn=0x7f020014;
+        public static final int xianjian01=0x7f020015;
+        public static final int xianjian02=0x7f020016;
+        public static final int xianjian03=0x7f020017;
+        public static final int xianjian04=0x7f020018;
     }
     public static final class id {
         public static final int action_settings=0x7f080003;
@@ -68,7 +69,6 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
-        public static final int hello_world=0x7f050002;
     }
     public static final class style {
         /** 
