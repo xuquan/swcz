@@ -9,7 +9,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.jm.swcz.R;
 import com.jm.swcz.tabs.MainTab;
@@ -43,6 +44,24 @@ public class LoginActivity extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_login:
+			EditText username_et = (EditText) findViewById(R.id.username);
+			EditText password_et = (EditText) findViewById(R.id.password);
+			String username = username_et.getText().toString();
+			String password = password_et.getText().toString();
+			if(null==username || "".equals(username) 
+				|| null==password || "".equals(password)){
+				Toast toast = Toast.makeText(this, "请输入用户名和密码", Toast.LENGTH_LONG);
+				toast.show();
+				return;
+			}
+			UserService userService = new UserService();
+			boolean isLogin = userService.checkUser(username, password);
+			if(!isLogin){
+				Toast toast = Toast.makeText(this, "请输入用户名或者密码错误", Toast.LENGTH_LONG);
+				toast.show();
+				return;
+			}
+			
 			final Intent intent = new Intent(LoginActivity.this,MainTab.class);
 			startActivity(intent);
 			break;

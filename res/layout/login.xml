@@ -7,12 +7,11 @@
 
     <ImageView
         android:id="@+id/image_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="42dp"
-        android:layout_marginRight="42dp"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/login_pic2" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/icon_ship" />
 
     <LinearLayout
         android:id="@+id/linearLayout01"
@@ -30,12 +29,12 @@
             android:orientation="horizontal" >
 
             <EditText
-                android:id="@+id/et_qqNum"
+                android:id="@+id/username"
                 android:layout_width="220dp"
                 android:layout_height="40dp"
                 android:background="#00ffffff"
                 android:hint="请输入账号"
-                android:inputType="number"
+                android:inputType="text"
                 android:paddingLeft="10dp" />
 
         </LinearLayout>
@@ -48,7 +47,7 @@
             android:background="@drawable/divider_horizontal_line" />
 
         <EditText
-            android:id="@+id/et_qqPwd"
+            android:id="@+id/password"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
             android:background="#00ffffff"
