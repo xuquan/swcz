@@ -1,5 +1,7 @@
 package com.jm.swcz.login;
 
+import com.jm.swcz.model.User;
+
 public class UserService {
 	
 	public boolean checkUser(String username,String password){
@@ -8,5 +10,9 @@ public class UserService {
 			flag = true;
 		}
 		return flag;
+	}
+	
+	public User findUser(String username){
+		return null;
 	}
 }

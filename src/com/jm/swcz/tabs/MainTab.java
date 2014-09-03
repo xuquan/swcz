@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost.TabSpec;
@@ -16,6 +18,9 @@ import com.jm.swcz.R;
  * 自定义TabHost
  */
 public class MainTab extends FragmentActivity{	
+	
+	public static final int MENU_EXIT = 3;
+	
 	//定义FragmentTabHost对象
 	private FragmentTabHost tabHost;
 	
@@ -77,5 +82,21 @@ public class MainTab extends FragmentActivity{
 		textView.setText(textviewArray[index]);
 	
 		return view;
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		menu.add(0, MENU_EXIT, 3, "退出").setIcon(R.drawable.menu_exit);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()){
+		case MENU_EXIT:
+			finish();
+			break;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }

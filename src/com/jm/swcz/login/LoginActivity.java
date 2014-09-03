@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.jm.swcz.R;
+import com.jm.swcz.model.User;
 import com.jm.swcz.tabs.MainTab;
 
 /**
@@ -62,6 +63,9 @@ public class LoginActivity extends Activity implements OnClickListener{
 				return;
 			}
 			
+			User user = userService.findUser(username);
+			Session.getInstance().putSession(username, user);
+			
 			final Intent intent = new Intent(LoginActivity.this,MainTab.class);
 			startActivity(intent);
 			break;
@@ -70,8 +74,8 @@ public class LoginActivity extends Activity implements OnClickListener{
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {//创建系统功能菜单
-		menu.add(0, MENU_PWD_BACK, 1, "密码找回").setIcon(R.drawable.menu_findkey);
-		menu.add(0,MENU_HELP,2,"帮助").setIcon(R.drawable.menu_setting);
+		//menu.add(0, MENU_PWD_BACK, 1, "密码找回").setIcon(R.drawable.menu_findkey);
+		//menu.add(0,MENU_HELP,2,"帮助").setIcon(R.drawable.menu_setting);
 		menu.add(0, MENU_EXIT, 3, "退出").setIcon(R.drawable.menu_exit);
 		return super.onCreateOptionsMenu(menu);
 	}
