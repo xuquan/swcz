@@ -6,19 +6,14 @@ public class User implements Serializable{
 
 	private static final long serialVersionUID = -4138685948556576036L;
 	
-	private Long userId;
+	private int userId;
 	private String username;
 	private String password;
 	private String realName;
 	private String email;
 	private String address;
+	private String mobilePhone;
 	
-	public Long getUserId() {
-		return userId;
-	}
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
 	public String getUsername() {
 		return username;
 	}
@@ -48,6 +43,18 @@ public class User implements Serializable{
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public String getMobilePhone() {
+		return mobilePhone;
+	}
+	public void setMobilePhone(String mobilePhone) {
+		this.mobilePhone = mobilePhone;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 }

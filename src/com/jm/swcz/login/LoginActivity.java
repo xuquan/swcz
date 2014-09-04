@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.jm.swcz.AppContext;
 import com.jm.swcz.R;
 import com.jm.swcz.model.User;
 import com.jm.swcz.tabs.MainTab;
@@ -65,6 +66,7 @@ public class LoginActivity extends Activity implements OnClickListener{
 			
 			User user = userService.findUser(username);
 			Session.getInstance().putSession(username, user);
+			AppContext.setAppContext(getApplicationContext());
 			
 			final Intent intent = new Intent(LoginActivity.this,MainTab.class);
 			startActivity(intent);

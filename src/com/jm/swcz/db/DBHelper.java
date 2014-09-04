@@ -7,11 +7,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
 	
+	private final static String DB_NAME = "swcz.db";
+	
 	private final static int VERSION = 1; // 数据库版本
 	
-	String sql = "create table if not exists User"+
-			"(user_id,username,password,real_name,email,address)";
-
 	public DBHelper(Context context, String name, CursorFactory factory,
 			int version) {
 		super(context, name, factory, version);
@@ -24,15 +23,23 @@ public class DBHelper extends SQLiteOpenHelper {
 	public DBHelper(Context context, String name){
 		this(context,name,VERSION);
 	}
+	
+	public DBHelper(Context context){
+		this(context,DB_NAME,VERSION);
+	}
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
+		String sql = "create table if not exists user"+
+				"(user_id,username,password,real_name,email,address)";
+
 		db.execSQL(sql);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+		String sql = "alter table user add mobile_phone integer";
+		db.execSQL(sql);
 	}
 
 }
