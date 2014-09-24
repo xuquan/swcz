@@ -1,4 +1,4 @@
-package com.jm.swcz.login;
+package com.jm.swcz.ui;
 
 import android.app.Activity;
 import android.app.AlertDialog;

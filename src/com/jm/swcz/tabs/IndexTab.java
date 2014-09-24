@@ -14,6 +14,7 @@ public class IndexTab extends Fragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		
-		return inflater.inflate(R.layout.index_tab, null);		
+		return inflater.inflate(R.layout.index_tab, null);	
+		
 	}	
 }

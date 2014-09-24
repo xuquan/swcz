@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".login.WelcomeActivity"
+            android:name="com.jm.swcz.ui.WelcomeActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,9 +22,9 @@
             </intent-filter>
         </activity>   
         
-        <activity android:name=".login.LoginActivity"></activity>
-        <activity android:name=".login.RegisterActivity"></activity>
-        <activity android:name=".login.RegisterConfirmActivity"></activity>
+        <activity android:name="com.jm.swcz.ui.LoginActivity"></activity>
+        <activity android:name="com.jm.swcz.ui.RegisterActivity"></activity>
+        <activity android:name="com.jm.swcz.ui.RegisterConfirmActivity"></activity>
         
         <activity android:name=".tabs.MainTab"></activity>
     </application>

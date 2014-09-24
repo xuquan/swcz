@@ -1,4 +1,4 @@
-package com.jm.swcz.login;
+package com.jm.swcz.service;
 
 import com.jm.swcz.model.User;
 

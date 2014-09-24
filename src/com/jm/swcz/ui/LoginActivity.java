@@ -1,4 +1,4 @@
-package com.jm.swcz.login;
+package com.jm.swcz.ui;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.jm.swcz.AppContext;
 import com.jm.swcz.R;
 import com.jm.swcz.model.User;
+import com.jm.swcz.service.UserService;
 import com.jm.swcz.tabs.MainTab;
 
 /**
@@ -65,7 +66,6 @@ public class LoginActivity extends Activity implements OnClickListener{
 			}
 			
 			User user = userService.findUser(username);
-			Session.getInstance().putSession(username, user);
 			AppContext.setAppContext(getApplicationContext());
 			
 			final Intent intent = new Intent(LoginActivity.this,MainTab.class);
