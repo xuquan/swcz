@@ -7,28 +7,19 @@ import java.util.List;
 import java.util.Map;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.jm.swcz.AppContext;
 
 public class DBMgr {
 	private DBHelper helper;
 	private SQLiteDatabase db;
 	
-	public DBMgr(Context context){
-		helper = new DBHelper(context);
-	}
-	
-	public SQLiteDatabase getDatabase(){
+	public DBMgr(){
+		helper = new DBHelper(AppContext.getAppContext());
 		db = helper.getWritableDatabase();
-		return db;
-	}
-	
-	public void closeDatabase(){
-		if(db!=null){
-			db.close();
-		}
 	}
 	
 	/**

@@ -30,16 +30,17 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		String sql = "create table if not exists user"+
-				"(user_id,username,password,real_name,email,address)";
-
-		db.execSQL(sql);
+		String userCreateSql = "create table if not exists t_user"+
+				"(user_id,username,password,real_name,email,address,mobile_phone)";
+		db.execSQL(userCreateSql);
+		String userInsertSql = "insert into t_user values('1','admin','sa','管理员','admin@qq.com','集美大学','13564323532')";
+		db.execSQL(userInsertSql);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		String sql = "alter table user add mobile_phone integer";
-		db.execSQL(sql);
+		//String sql = "alter table t_user add mobile_phone integer";
+		//db.execSQL(sql);
 	}
 
 }

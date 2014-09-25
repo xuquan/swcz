@@ -1,4 +1,4 @@
-package com.jm.swcz.tabs;
+package com.jm.swcz.ui.tabs;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;

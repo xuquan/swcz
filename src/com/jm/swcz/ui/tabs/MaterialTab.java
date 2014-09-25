@@ -1,4 +1,4 @@
-package com.jm.swcz.tabs;
+package com.jm.swcz.ui.tabs;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 
 import com.jm.swcz.R;
 
-public class DismountingTab extends Fragment{
+public class MaterialTab extends Fragment{
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {	
-		return inflater.inflate(R.layout.dismounting_tab, null);		
+		return inflater.inflate(R.layout.material_tab, null);		
 	}	
 }

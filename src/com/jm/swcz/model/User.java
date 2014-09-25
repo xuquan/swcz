@@ -6,14 +6,19 @@ public class User implements Serializable{
 
 	private static final long serialVersionUID = -4138685948556576036L;
 	
-	private int userId;
+	private String user_id;
 	private String username;
 	private String password;
-	private String realName;
+	private String real_name;
 	private String email;
 	private String address;
-	private String mobilePhone;
-	
+	private String mobile_phone;
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -26,11 +31,11 @@ public class User implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getRealName() {
-		return realName;
+	public String getReal_name() {
+		return real_name;
 	}
-	public void setRealName(String realName) {
-		this.realName = realName;
+	public void setReal_name(String real_name) {
+		this.real_name = real_name;
 	}
 	public String getEmail() {
 		return email;
@@ -44,17 +49,11 @@ public class User implements Serializable{
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getMobilePhone() {
-		return mobilePhone;
+	public String getMobile_phone() {
+		return mobile_phone;
 	}
-	public void setMobilePhone(String mobilePhone) {
-		this.mobilePhone = mobilePhone;
+	public void setMobile_phone(String mobile_phone) {
+		this.mobile_phone = mobile_phone;
 	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
+	
 }

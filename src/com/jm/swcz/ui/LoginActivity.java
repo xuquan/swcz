@@ -14,9 +14,9 @@ import android.widget.Toast;
 
 import com.jm.swcz.AppContext;
 import com.jm.swcz.R;
-import com.jm.swcz.model.User;
-import com.jm.swcz.service.UserService;
-import com.jm.swcz.tabs.MainTab;
+import com.jm.swcz.factory.BeanFactory;
+import com.jm.swcz.service.LoginService;
+import com.jm.swcz.ui.tabs.MainTab;
 
 /**
  * 登陆界面activity
@@ -27,13 +27,16 @@ public class LoginActivity extends Activity implements OnClickListener{
 	public static final int MENU_PWD_BACK = 1;
 	public static final int MENU_HELP = 2;
 	public static final int MENU_EXIT = 3;
-
+	
+	private LoginService loginSerive;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		AppContext.setAppContext(getApplicationContext());
+		loginSerive = (LoginService) BeanFactory.getInstance().getBean(LoginService.class);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.login);
-		
 		initView();
 	}
 	
@@ -51,22 +54,23 @@ public class LoginActivity extends Activity implements OnClickListener{
 			EditText password_et = (EditText) findViewById(R.id.password);
 			String username = username_et.getText().toString();
 			String password = password_et.getText().toString();
-			if(null==username || "".equals(username) 
-				|| null==password || "".equals(password)){
-				Toast toast = Toast.makeText(this, "请输入用户名和密码", Toast.LENGTH_LONG);
-				toast.show();
+			if(null==username || "".equals(username)){
+				username_et.setError("请输入用户名!");
 				return;
 			}
-			UserService userService = new UserService();
-			boolean isLogin = userService.checkUser(username, password);
+			if(null==password || "".equals(password)){
+				password_et.setError("请输入密码!");
+				return;
+			}
+			
+			boolean isLogin = loginSerive.login(username.trim(), password.trim());
 			if(!isLogin){
-				Toast toast = Toast.makeText(this, "请输入用户名或者密码错误", Toast.LENGTH_LONG);
+				Toast toast = Toast.makeText(this, "用户名或者密码错误", Toast.LENGTH_LONG);
 				toast.show();
 				return;
 			}
 			
-			User user = userService.findUser(username);
-			AppContext.setAppContext(getApplicationContext());
+			loginSerive.saveLoginMsg(username, password);
 			
 			final Intent intent = new Intent(LoginActivity.this,MainTab.class);
 			startActivity(intent);

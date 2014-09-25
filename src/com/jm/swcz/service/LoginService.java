@@ -6,12 +6,18 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
+import com.jm.swcz.AppContext;
+import com.jm.swcz.factory.BeanFactory;
+import com.jm.swcz.model.User;
+
 public class LoginService {
 
 	private Context context;
 	
-	public LoginService(Context context){
-		this.context = context;
+	private UserService userSerive = (UserService) BeanFactory.getInstance().getBean(UserService.class);
+	
+	public LoginService(){
+		this.context = AppContext.getAppContext();
 	}
 	
 	public boolean saveLoginMsg(String username,String password){
@@ -64,5 +70,21 @@ public class LoginService {
 		SharedPreferences preferences = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
 		map = preferences.getAll();
 		return map;
+	}
+	
+	/**
+	 * 登录，如果用户名与密码跟数据库的相同，则登录成功
+	 * @param username
+	 * @param password
+	 * @return
+	 */
+	public boolean login(String username,String password){
+		boolean flag = false;
+		User user = userSerive.findUser(username);
+		if(user!=null && username.equals(user.getUsername()) 
+				&& password.equals(user.getPassword())){
+			flag = true;
+		}
+		return flag;
 	}
 }

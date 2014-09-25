@@ -1,4 +1,4 @@
-package com.jm.swcz.tabs;
+package com.jm.swcz.ui.tabs;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
