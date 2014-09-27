@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+	<FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <RadioGroup
+        android:id="@+id/rg_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_weight="0"
+		android:padding="5dip"
+        android:background="@drawable/main_tab_bar_bkg"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/rb_index"
+            style="@style/main_tab_style"
+            android:checked="true"
+            android:drawableTop="@drawable/main_tab_index_selector"
+            android:text="首页" />
+
+        <RadioButton
+            android:id="@+id/rb_dismounting"
+            style="@style/main_tab_style"
+            android:drawableTop="@drawable/main_tab_dismounting_selector"
+            android:text="拆装" />
+
+        <RadioButton
+            android:id="@+id/rb_decision"
+            style="@style/main_tab_style"
+            android:drawableTop="@drawable/main_tab_decision_selector"
+            android:text="决策" />
+
+        <RadioButton
+            android:id="@+id/rb_material"
+            style="@style/main_tab_style"
+            android:drawableTop="@drawable/main_tab_material_selector"
+            android:text="物料" />
+        
+        <RadioButton
+            android:id="@+id/rb_more"
+            style="@style/main_tab_style"
+            android:drawableTop="@drawable/main_tab_more_selector"
+            android:text="更多" />
+
+    </RadioGroup>
+</LinearLayout>
