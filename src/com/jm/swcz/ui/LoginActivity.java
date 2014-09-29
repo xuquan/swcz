@@ -100,7 +100,8 @@ public class LoginActivity extends Activity implements OnClickListener{
 			startActivity(intent);
 			break;
 		case R.id.tv_new_user:
-			
+			final Intent registerIntent = new Intent(LoginActivity.this,RegisterActivity.class);
+			startActivity(registerIntent);
 			break;
 		case R.id.tv_find_password:
 			

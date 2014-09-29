@@ -30,13 +30,10 @@ public class RegisterConfirmActivity extends Activity implements OnClickListener
 
 	private void initView() {
 		tv_reg_reget = (TextView) findViewById(R.id.tv_reg_reget);
-		tv_top_title = (TextView) findViewById(R.id.tv_top_title);
 		tv_top_title.setText("QQ注册");
 		mc = new MyCount(10000, 1000);
 		mc.start();
-		btn_title_left = (Button) findViewById(R.id.btn_title_left);
 		btn_title_left.setOnClickListener(this);
-		btn_title_right = (Button) findViewById(R.id.btn_title_right);
 		btn_title_right.setVisibility(View.GONE);
 		btn_reg_reget = (Button) findViewById(R.id.btn_reg_reget);
 		btn_reg_reget.setOnClickListener(this);
@@ -78,9 +75,6 @@ public class RegisterConfirmActivity extends Activity implements OnClickListener
 			mc.start();
 			tv_reg_reget.setVisibility(View.VISIBLE);
 			btn_reg_reget.setVisibility(View.GONE);
-			break;
-		case R.id.btn_title_left:
-			RegisterConfirmActivity.this.finish();
 			break;
 		}
 	}

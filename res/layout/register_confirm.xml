@@ -5,8 +5,6 @@
     android:background="#e8f0f0"
     android:orientation="vertical" >
 
-    <include layout="@layout/title_bar" />
-    
     <LinearLayout
             android:id="@+id/linearLayout01"
             android:layout_width="fill_parent"
