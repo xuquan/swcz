@@ -31,15 +31,11 @@ public class DBMgr {
 	public boolean updateBySQL(String sql,Object[] bindArgs){
 		boolean flag = false;
 		try {
-			db.execSQL(sql);
+			db.execSQL(sql,bindArgs);
 			flag = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			if(db!=null && db.isOpen()){
-				db.close();
-			}
-		}
+		} 
 		return flag;
 	}
 	

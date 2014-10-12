@@ -92,9 +92,39 @@
 	        android:textSize="12sp" >
 	    </EditText>
     </LinearLayout>
+    
+    <LinearLayout 
+        android:id="@+id/layout_real_name"
+        android:layout_below="@+id/layout_repeat_password"
+        android:layout_width="match_parent"
+	    android:layout_height="40dp"
+	    android:layout_marginLeft="20dip"
+	    android:layout_marginRight="20dip"
+	    android:background="#fff"
+	    android:orientation="horizontal">
+	    <TextView
+	        android:layout_width="match_parent"
+	        android:layout_height="40dp"
+	        android:layout_weight="3"
+	        android:layout_marginLeft="5dip"
+	        android:text="姓        名"
+	        android:textColor="#000000"
+	        android:textSize="12sp" />
+	
+	    <EditText
+	        android:id="@+id/et_real_name"
+	        android:layout_width="match_parent"
+	        android:layout_height="40dp"
+	        android:layout_weight="1"
+	        android:hint="(必填)输入姓名"
+	        android:background="#00ffffff"
+	        android:textSize="12sp" >
+	    </EditText>
+    </LinearLayout>
+    
 	<LinearLayout 
         android:id="@+id/layout_mobile_phone"
-        android:layout_below="@+id/layout_repeat_password"
+        android:layout_below="@+id/layout_real_name"
         android:layout_width="match_parent"
 	    android:layout_height="40dp"
 	    android:layout_marginLeft="20dip"
@@ -121,14 +151,45 @@
 	        android:textSize="12sp" >
 	    </EditText>
     </LinearLayout>
+    
+	
+	<LinearLayout 
+        android:id="@+id/layout_email"
+        android:layout_below="@+id/layout_mobile_phone"
+        android:layout_width="match_parent"
+	    android:layout_height="40dp"
+	    android:layout_marginLeft="20dip"
+	    android:layout_marginRight="20dip"
+	    android:background="#fff"
+	    android:orientation="horizontal">
+	    <TextView
+	        android:layout_width="match_parent"
+	        android:layout_height="40dp"
+	        android:layout_weight="3"
+	        android:layout_marginLeft="5dip"
+	        android:text="电子邮箱"
+	        android:textColor="#000000"
+	        android:textSize="12sp" />
+	
+	    <EditText
+	        android:id="@+id/et_email"
+	        android:layout_width="match_parent"
+	        android:layout_height="40dp"
+	        android:layout_weight="1"
+	        android:hint="输入电子邮箱"
+	        android:background="#00ffffff"
+	        android:inputType="textEmailAddress"
+	        android:textSize="12sp" >
+	    </EditText>
+    </LinearLayout>
 
     <Button
-        android:id="@+id/btn_save"
+        android:id="@+id/btn_save_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/layout_mobile_phone"
-        android:layout_alignRight="@+id/layout_mobile_phone"
-        android:layout_below="@+id/layout_mobile_phone"
+        android:layout_alignLeft="@+id/layout_email"
+        android:layout_alignRight="@+id/layout_email"
+        android:layout_below="@+id/layout_email"
         android:layout_marginTop="10dip"
         android:text="保存"
         android:textSize="12sp" />

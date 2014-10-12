@@ -1,55 +1,101 @@
 package com.jm.swcz.ui;
 
+import java.util.UUID;
+
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jm.swcz.R;
-import com.jm.swcz.util.CheckUtil;
+import com.jm.swcz.factory.BeanFactory;
+import com.jm.swcz.model.User;
+import com.jm.swcz.service.UserService;
 
 /**
  * 注册界面activity
  */
 public class RegisterActivity extends Activity implements android.view.View.OnClickListener{
 	public static final int REGION_SELECT = 1;
-	private TextView tv_top_title;
-	private Button btn_title_left,btn_title_right,btn_send_code;
-	private CheckBox chk_agree;
-	private EditText et_mobileNo;
+	private Button btn_save_user;
+	private EditText et_username,et_password,et_repeat_password,
+		et_mobile_phone,et_real_name,et_email;
+	private UserService userService = (UserService) BeanFactory.getInstance().getBean(UserService.class);
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.register_activity);
 		initView();
 	}
 	
 	private void initView(){
-		btn_send_code = (Button) findViewById(R.id.btn_save);
-		btn_send_code.setOnClickListener(this);
+		et_username = (EditText) findViewById(R.id.et_username);
+		et_password = (EditText) findViewById(R.id.et_password);
+		et_repeat_password = (EditText) findViewById(R.id.et_repeat_password);
+		et_mobile_phone = (EditText) findViewById(R.id.et_mobile_phone);
+		et_real_name = (EditText) findViewById(R.id.et_real_name);
+		et_email = (EditText) findViewById(R.id.et_email);
+		btn_save_user = (Button) findViewById(R.id.btn_save_user);
+		btn_save_user.setOnClickListener(this);
+	}
+	
+	private User checkAndGetInput(){
+		String username = et_username.getText().toString();
+		String password = et_password.getText().toString();
+		String repeat_password = et_repeat_password.getText().toString();
+		String real_name = et_real_name.getText().toString();
+		String mobile_phone = et_mobile_phone.getText().toString();
+		String email = et_email.getText().toString();
+		
+		if(username==null || "".equals(username)){
+			et_username.setError("用户名必填");
+			return null;
+		}
+		User userIsExist = userService.findUser(username);
+		if(userIsExist!=null){
+			et_username.setError("用户名已存在，请输入其他用户名");
+			return null;
+		}
+		if(password==null || "".equals(password)){
+			et_password.setError("密码必填");
+			return null;
+		}
+		if(!password.equals(repeat_password)){
+			et_repeat_password.setError("重复密码与密码不一致");
+			return null;
+		}
+		if(real_name==null || "".equals(real_name)){
+			et_real_name.setError("姓名必填");
+			return null;
+		}
+		User user = new User();
+		user.setUser_id(UUID.randomUUID().toString());
+		user.setUsername(username.trim());
+		user.setPassword(password.trim());
+		user.setReal_name(real_name.trim());
+		user.setMobile_phone(mobile_phone.trim());
+		user.setEmail(email.trim());
+		return user;
 	}
 	
 	@Override
 	public void onClick(View v) {
 		switch(v.getId()){
-		case R.id.btn_save:
-			String mobiles = et_mobileNo.getText().toString();
-			if(chk_agree.isChecked()== false)//若没勾选checkbox无法后续操作
-				Toast.makeText(this, "请确认是否已经阅读《腾讯QQ服务条款》", Toast.LENGTH_LONG).show();
-			if(CheckUtil.isMobileNO(mobiles)==false)//对手机号码严格验证，参见工具类中的正则表达式
-				Toast.makeText(this, "正确填写手机号，我们将向您发送一条验证码短信", Toast.LENGTH_LONG).show();
-			if(CheckUtil.isMobileNO(mobiles)==true&&chk_agree.isChecked()==true){
-				//当勾选中且号码正确，点击进行下一步操作
-				Toast.makeText(this, "已经向您手机发送验证码，请查看", Toast.LENGTH_LONG).show();
-				Intent intent = new Intent(RegisterActivity.this, RegisterConfirmActivity.class);
-				startActivity(intent);
+		case R.id.btn_save_user:
+			User user = checkAndGetInput();
+			if(user!=null){
+				boolean flag = userService.saveUser(user);
+				String msg = "";
+				if(flag){
+					msg = "注册成功";
+					Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+					this.finish();
+				}else{
+					msg = "注册失败";
+					Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+				}
 			}
 		}
 		

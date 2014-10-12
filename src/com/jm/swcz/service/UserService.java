@@ -8,6 +8,10 @@ public class UserService {
 	
 	private UserDao userDao = (UserDao) BeanFactory.getInstance().getBean(UserDao.class);
 	
+	public boolean saveUser(User user){
+		return userDao.saveUser(user);
+	}
+	
 	public User findUserById(String userId){
 		return userDao.findUserById(userId);
 	}

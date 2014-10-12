@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,6 +53,14 @@ public class LoginActivity extends Activity implements OnClickListener{
 	
 	private void initView(){
 		et_username = (EditText) findViewById(R.id.username);
+		et_username.setOnFocusChangeListener(new OnFocusChangeListener() {
+			
+			@Override
+			public void onFocusChange(View v, boolean hasFocus) {
+				
+			}
+			
+		});
 		et_password = (EditText) findViewById(R.id.password);
 		btn_login = (Button) findViewById(R.id.btn_login);
 		btn_login.setOnClickListener(this);

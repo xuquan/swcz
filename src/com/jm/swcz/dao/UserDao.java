@@ -8,11 +8,11 @@ public class UserDao{
 	
 	private DBMgr dbMgr = (DBMgr) BeanFactory.getInstance().getBean(DBMgr.class);
 
-	public void saveUser(User user){
+	public boolean saveUser(User user){
 		String sql = "insert into t_user (user_id,username,password,real_name,email,address,mobile_phone) values (?,?,?,?,?,?,?)";
 		Object[] bindArgs = new Object[]{user.getUser_id(),user.getUsername(),user.getPassword(),
 				user.getReal_name(),user.getEmail(),user.getAddress(),user.getMobile_phone()};
-		dbMgr.updateBySQL(sql, bindArgs);
+		return dbMgr.updateBySQL(sql, bindArgs);
 	}
 	
 	public void updateUser(User user){

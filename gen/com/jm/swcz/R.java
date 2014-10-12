@@ -99,18 +99,22 @@ public final class R {
         public static final int top_rightbtn_pressed=0x7f020044;
     }
     public static final class id {
-        public static final int action_settings=0x7f09001b;
+        public static final int action_settings=0x7f09001f;
         public static final int btn_login=0x7f090005;
-        public static final int btn_reg_reget=0x7f090019;
-        public static final int btn_save=0x7f090018;
+        public static final int btn_reg_reget=0x7f09001d;
+        public static final int btn_save_user=0x7f09001c;
         public static final int content=0x7f090008;
-        public static final int et_mobile_phone=0x7f090017;
+        public static final int et_email=0x7f09001b;
+        public static final int et_mobile_phone=0x7f090019;
         public static final int et_password=0x7f090013;
+        public static final int et_real_name=0x7f090017;
         public static final int et_repeat_password=0x7f090015;
         public static final int et_username=0x7f090011;
         public static final int image_logo=0x7f090001;
-        public static final int layout_mobile_phone=0x7f090016;
+        public static final int layout_email=0x7f09001a;
+        public static final int layout_mobile_phone=0x7f090018;
         public static final int layout_password=0x7f090012;
+        public static final int layout_real_name=0x7f090016;
         public static final int layout_repeat_password=0x7f090014;
         public static final int layout_username=0x7f09000f;
         public static final int linearLayout01=0x7f090002;
@@ -123,7 +127,7 @@ public final class R {
         public static final int rg_tab=0x7f090009;
         public static final int tv_find_password=0x7f090007;
         public static final int tv_new_user=0x7f090006;
-        public static final int tv_reg_reget=0x7f09001a;
+        public static final int tv_reg_reget=0x7f09001e;
         public static final int tv_username=0x7f090010;
         public static final int txt_content=0x7f090000;
         public static final int username=0x7f090003;
