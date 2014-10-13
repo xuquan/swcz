@@ -6,11 +6,12 @@ import java.util.Map;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
+import android.view.View.OnKeyListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,11 +54,14 @@ public class LoginActivity extends Activity implements OnClickListener{
 	
 	private void initView(){
 		et_username = (EditText) findViewById(R.id.username);
-		et_username.setOnFocusChangeListener(new OnFocusChangeListener() {
-			
+		et_username.setOnKeyListener(new OnKeyListener(){
+
 			@Override
-			public void onFocusChange(View v, boolean hasFocus) {
-				
+			public boolean onKey(View v, int keyCode, KeyEvent event) {
+				if(keyCode==KeyEvent.KEYCODE_DEL){
+					et_password.setText("");
+				}
+				return false;
 			}
 			
 		});

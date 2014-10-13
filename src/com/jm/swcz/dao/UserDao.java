@@ -4,6 +4,11 @@ import com.jm.swcz.db.DBMgr;
 import com.jm.swcz.factory.BeanFactory;
 import com.jm.swcz.model.User;
 
+/**
+ * 用户持久层
+ * @author lenovo
+ *
+ */
 public class UserDao{
 	
 	private DBMgr dbMgr = (DBMgr) BeanFactory.getInstance().getBean(DBMgr.class);

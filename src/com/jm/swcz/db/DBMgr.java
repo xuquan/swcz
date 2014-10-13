@@ -13,6 +13,11 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.jm.swcz.AppContext;
 
+/**
+ * 数据库管理器
+ * @author lenovo
+ *
+ */
 public class DBMgr {
 	private DBHelper helper;
 	private SQLiteDatabase db;

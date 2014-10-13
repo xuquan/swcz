@@ -10,6 +10,11 @@ import com.jm.swcz.AppContext;
 import com.jm.swcz.factory.BeanFactory;
 import com.jm.swcz.model.User;
 
+/**
+ * 登录服务层
+ * @author lenovo
+ *
+ */
 public class LoginService {
 
 	private Context context;

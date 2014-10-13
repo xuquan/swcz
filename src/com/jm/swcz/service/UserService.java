@@ -4,6 +4,11 @@ import com.jm.swcz.dao.UserDao;
 import com.jm.swcz.factory.BeanFactory;
 import com.jm.swcz.model.User;
 
+/**
+ * 用户服务层
+ * @author lenovo
+ *
+ */
 public class UserService {
 	
 	private UserDao userDao = (UserDao) BeanFactory.getInstance().getBean(UserDao.class);

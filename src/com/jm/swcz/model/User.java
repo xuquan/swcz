@@ -2,6 +2,11 @@ package com.jm.swcz.model;
 
 import java.io.Serializable;
 
+/**
+ * 用户
+ * @author lenovo
+ *
+ */
 public class User implements Serializable{
 
 	private static final long serialVersionUID = -4138685948556576036L;
