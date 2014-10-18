@@ -18,6 +18,9 @@ public class User implements Serializable{
 	private String email;
 	private String address;
 	private String mobile_phone;
+	private String dept_id;
+	private String dept_name;
+	
 	public String getUser_id() {
 		return user_id;
 	}
@@ -59,6 +62,18 @@ public class User implements Serializable{
 	}
 	public void setMobile_phone(String mobile_phone) {
 		this.mobile_phone = mobile_phone;
+	}
+	public String getDept_id() {
+		return dept_id;
+	}
+	public void setDept_id(String dept_id) {
+		this.dept_id = dept_id;
+	}
+	public String getDept_name() {
+		return dept_name;
+	}
+	public void setDept_name(String dept_name) {
+		this.dept_name = dept_name;
 	}
 	
 }

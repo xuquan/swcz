@@ -20,17 +20,17 @@ public class UserDao{
 		return dbMgr.updateBySQL(sql, bindArgs);
 	}
 	
-	public void updateUser(User user){
+	public boolean updateUser(User user){
 		String sql = "update t_user set real_name=?,email=?,address=?,mobile_phone=? where user_id=?";
 		Object[] bindArgs = new Object[]{user.getReal_name(),user.getEmail(),
 				user.getAddress(),user.getMobile_phone(),user.getUser_id()};
-		dbMgr.updateBySQL(sql, bindArgs);
+		return dbMgr.updateBySQL(sql, bindArgs);
 	}
 	
-	public void deleteUser(int userId){
+	public boolean deleteUser(String userId){
 		String sql = "delete from t_user where user_id=?";
 		Object[] bindArgs = new Object[]{userId};
-		dbMgr.updateBySQL(sql, bindArgs);
+		return dbMgr.updateBySQL(sql, bindArgs);
 	}
 	
 	public User findUserById(String userId){

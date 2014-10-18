@@ -17,6 +17,14 @@ public class UserService {
 		return userDao.saveUser(user);
 	}
 	
+	public boolean updateUser(User user){
+		return userDao.updateUser(user);
+	}
+	
+	public boolean deleteUser(String userId){
+		return userDao.deleteUser(userId);
+	}
+	
 	public User findUserById(String userId){
 		return userDao.findUserById(userId);
 	}
