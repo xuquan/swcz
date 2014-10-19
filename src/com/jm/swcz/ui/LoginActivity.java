@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.jm.swcz.AppContext;
 import com.jm.swcz.R;
 import com.jm.swcz.factory.BeanFactory;
+import com.jm.swcz.model.User;
 import com.jm.swcz.service.LoginService;
 
 /**
@@ -97,14 +98,15 @@ public class LoginActivity extends Activity implements OnClickListener{
 				return;
 			}
 			
-			boolean isLogin = loginService.login(username.trim(), password.trim());
-			if(!isLogin){
+			User user = loginService.login(username.trim(), password.trim());
+			if(user==null){
 				Toast toast = Toast.makeText(this, "用户名或者密码错误", Toast.LENGTH_LONG);
 				toast.show();
 				return;
 			}
 			
 			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("user_id", user.getUser_id());
 			map.put("username", username);
 			map.put("password", password);
 			loginService.saveSharePreference("login", map);

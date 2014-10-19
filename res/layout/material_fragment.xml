@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#B6A395">
 
-    <TextView
-        android:id="@+id/txt_content"
+    <SearchView
+        android:id="@+id/sv_material"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:iconifiedByDefault="false"
+        android:inputType="textFilter"
+        android:padding="5dp"
+        android:queryHint="输入物料名称、物料编码、供应商名称查询" >
+		
+    </SearchView>
+
+    <ListView
+        android:id="@+id/android:list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text=""
-        android:textSize="20sp" />
+        android:layout_below="@+id/sv_material"
+        android:scrollbars="vertical"
+        android:padding="5dp">
+
+    </ListView>
 
 </RelativeLayout>

@@ -26,8 +26,9 @@
         <activity android:name="com.jm.swcz.ui.RegisterActivity"></activity>
         <activity android:name="com.jm.swcz.ui.RegisterConfirmActivity"></activity>
         
-        <activity android:name="com.jm.swcz.ui.tabs.MainTab"></activity>
-        <activity android:name="com.jm.swcz.ui.MainActivity"></activity>
+        <activity 
+            android:name="com.jm.swcz.ui.MainActivity"
+            android:windowSoftInputMode="adjustNothing"/>
     </application>
 
 </manifest>

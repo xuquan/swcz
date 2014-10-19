@@ -1,5 +1,7 @@
 package com.jm.swcz.service;
 
+import android.text.TextUtils;
+
 import com.jm.swcz.dao.StorageDao;
 import com.jm.swcz.factory.BeanFactory;
 import com.jm.swcz.model.Storage;
@@ -14,7 +16,14 @@ public class StorageService {
 	private StorageDao storageDao = (StorageDao) BeanFactory.getInstance().getBean(StorageDao.class);
 	
 	public boolean saveStorage(Storage storage){
-		return storageDao.saveStorage(storage);
+		boolean flag = true;
+		String storageId = storage.getStorage_id();
+		if(TextUtils.isEmpty(storageId)){
+			flag = storageDao.saveStorage(storage);
+		}else{
+			flag = storageDao.updateStorage(storage);
+		}
+		return flag;
 	}
 	
 	public boolean updateStorage(Storage storage){

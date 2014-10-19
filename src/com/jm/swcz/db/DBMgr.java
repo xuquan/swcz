@@ -44,6 +44,23 @@ public class DBMgr {
 		return flag;
 	}
 	
+	public int queryTotalRecords(String sql,String[] selectionArgs){
+		int totalRecords = 0;
+		Cursor cursor = db.rawQuery(sql, selectionArgs);
+		int columnCount = cursor.getColumnCount();
+		while(cursor.moveToNext()){
+			for(int i=0;i<columnCount;i++){
+				String columnName = cursor.getColumnName(i);
+				String columnValue = cursor.getString(cursor.getColumnIndex(columnName));
+				if(columnValue==null){
+					columnValue = "0";
+				}
+				totalRecords = Integer.parseInt(columnValue);
+			}
+		}
+		return totalRecords;
+	}
+	
 	public Map<String,String> queryBySQL(String sql,String[] selectionArgs){
 		Map<String,String> map = new HashMap<String,String>();
 		Cursor cursor = db.rawQuery(sql, selectionArgs);
@@ -137,8 +154,8 @@ public class DBMgr {
 					Field field = cls.getDeclaredField(columnName);
 					field.setAccessible(true);
 					field.set(t, columnValue);
-					list.add(t);
 				}
+				list.add(t);
 			} catch (InstantiationException e) {
 				e.printStackTrace();
 			} catch (IllegalAccessException e) {
@@ -211,4 +228,5 @@ public class DBMgr {
 				groupBy, having, orderBy, limit);
 		return cursor;
 	}
+	
 }

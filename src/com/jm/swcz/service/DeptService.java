@@ -1,5 +1,9 @@
 package com.jm.swcz.service;
 
+import java.util.UUID;
+
+import android.text.TextUtils;
+
 import com.jm.swcz.dao.DeptDao;
 import com.jm.swcz.factory.BeanFactory;
 import com.jm.swcz.model.Dept;
@@ -14,7 +18,15 @@ public class DeptService {
 	private DeptDao deptDao = (DeptDao) BeanFactory.getInstance().getBean(DeptDao.class);
 	
 	public boolean saveDept(Dept dept){
-		return deptDao.saveDept(dept);
+		boolean flag = false;
+		String deptId = dept.getDept_id();
+		if(TextUtils.isEmpty(deptId)){
+			dept.setDept_id(UUID.randomUUID().toString());
+			flag = deptDao.saveDept(dept);
+		}else{
+			flag = deptDao.updateDept(dept);
+		}
+		return flag;
 	}
 	
 	public boolean updateDept(Dept dept){

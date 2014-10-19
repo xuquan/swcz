@@ -49,5 +49,34 @@ public class MaterialType {
 	public void setOperate_time(String operate_time) {
 		this.operate_time = operate_time;
 	}
+	@Override
+	public String toString() {
+		return material_type_name;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime
+				* result
+				+ ((material_type_id == null) ? 0 : material_type_id.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MaterialType other = (MaterialType) obj;
+		if (material_type_id == null) {
+			if (other.material_type_id != null)
+				return false;
+		} else if (!material_type_id.equals(other.material_type_id))
+			return false;
+		return true;
+	}
 	
 }

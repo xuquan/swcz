@@ -1,5 +1,7 @@
 package com.jm.swcz.dao;
 
+import java.util.List;
+
 import com.jm.swcz.db.DBMgr;
 import com.jm.swcz.factory.BeanFactory;
 import com.jm.swcz.model.MaterialType;
@@ -44,4 +46,11 @@ public class MaterialTypeDao{
 		return materialType;
 	}
 	
+	public List<MaterialType> findMaterialTypeList(){
+		List<MaterialType> materialTypeList = null;
+		String sql = "select * from t_material_type";
+		String[] selectionArgs = new String[]{};
+		materialTypeList = dbMgr.queryMultiCursor(sql, selectionArgs, MaterialType.class);
+		return materialTypeList;
+	}
 }

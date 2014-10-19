@@ -83,13 +83,12 @@ public class LoginService {
 	 * @param password
 	 * @return
 	 */
-	public boolean login(String username,String password){
-		boolean flag = false;
+	public User login(String username,String password){
 		User user = userSerive.findUser(username);
 		if(user!=null && username.equals(user.getUsername()) 
 				&& password.equals(user.getPassword())){
-			flag = true;
+			return user;
 		}
-		return flag;
+		return null;
 	}
 }

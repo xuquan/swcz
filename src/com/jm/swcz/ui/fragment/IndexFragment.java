@@ -10,6 +10,12 @@ import android.widget.TextView;
 import com.jm.swcz.R;
 
 public class IndexFragment extends Fragment {
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		getActivity().setTitle("首页");
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

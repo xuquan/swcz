@@ -1,5 +1,7 @@
 package com.jm.swcz.dao;
 
+import java.util.List;
+
 import com.jm.swcz.db.DBMgr;
 import com.jm.swcz.factory.BeanFactory;
 import com.jm.swcz.model.Material;
@@ -37,7 +39,7 @@ public class MaterialDao{
 		String sql = "update t_material set material_type_id=?,material_code=?," +
 				"material_name_cn=?,material_name_en=?,specifications=?," +
 				"material_no=?,size_weight=?,other_tech_data=?,safe_storage=?," +
-				"legal_storage=?,amount=?,storage_up_limit=?,storage_down_limit=?,unit,storage_id=?," +
+				"legal_storage=?,amount=?,storage_up_limit=?,storage_down_limit=?,unit=?,storage_id=?," +
 				"manufacturer_code=?,manufacturer_name=?,manufacturer_reference_number=?," +
 				"internal_price=?,internal_price_unit=?,enter_price=?,enter_price_unit=?," +
 				"dept_id=?,duty_person=?,remark=?,user_id=?,operate_time=? where material_id=?";
@@ -66,4 +68,25 @@ public class MaterialDao{
 		return material;
 	}
 	
+	public List<Material> findMaterialList(int pageNo, int pageSize){
+		List<Material> list = null;
+//		String[] columns = new String[]{"material_id","material_type_id","material_code",
+//				"material_name_cn","material_name_en","specifications",
+//				"material_no","size_weight","other_tech_data","safe_storage",
+//				"legal_storage","amount","storage_up_limit","storage_down_limit","unit","storage_id",
+//				"manufacturer_code","manufacturer_name","manufacturer_reference_number",
+//				"internal_price","internal_price_unit","enter_price","enter_price_unit",
+//				"dept_id","duty_person","remark","user_id","operate_time"};
+		String sql = "select t1.* from t_material t1 limit ?,?";
+		int pageStart = (pageNo-1) * pageSize;
+		String[] selectionArgs = new String[]{String.valueOf(pageStart),String.valueOf(pageSize)};
+		list = dbMgr.queryMultiCursor(sql, selectionArgs, Material.class);
+		return list;
+	}
+	
+	public int getRecordCount(){
+		String sql = "select count(*) as count from t_material";
+		int count = dbMgr.queryTotalRecords(sql, null);
+		return count;
+	}
 }

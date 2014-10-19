@@ -31,9 +31,11 @@ public class MainActivity extends Activity {
 				FragmentTransaction transaction = fm.beginTransaction();
 				Fragment fragment = FragmentFactory.getInstanceByIndex(checkedId);
 				transaction.replace(R.id.content, fragment);
+				transaction.addToBackStack(null);
 				transaction.commit();
 			}
 		});
+		
 	}
 	
 	@Override

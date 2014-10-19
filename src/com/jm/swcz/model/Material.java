@@ -8,6 +8,7 @@ package com.jm.swcz.model;
 public class Material {
 	private String material_id;
 	private String material_type_id;
+	private MaterialType materialType;
 	private String material_code;
 	private String material_name_cn;
 	private String material_name_en;
@@ -22,6 +23,7 @@ public class Material {
 	private String storage_down_limit;
 	private String unit;
 	private String storage_id;
+	private Storage storage;
 	private String manufacturer_code;
 	private String manufacturer_name;
 	private String manufacturer_reference_number;
@@ -30,9 +32,11 @@ public class Material {
 	private String enter_price;
 	private String enter_price_unit;
 	private String dept_id;
+	private Dept dept;
 	private String duty_person;
 	private String remark;
 	private String user_id;
+	private User user;
 	private String operate_time;
 	
 	public String getMaterial_id() {
@@ -203,6 +207,54 @@ public class Material {
 	}
 	public void setOperate_time(String operate_time) {
 		this.operate_time = operate_time;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((material_id == null) ? 0 : material_id.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Material other = (Material) obj;
+		if (material_id == null) {
+			if (other.material_id != null)
+				return false;
+		} else if (!material_id.equals(other.material_id))
+			return false;
+		return true;
+	}
+	public MaterialType getMaterialType() {
+		return materialType;
+	}
+	public void setMaterialType(MaterialType materialType) {
+		this.materialType = materialType;
+	}
+	public Storage getStorage() {
+		return storage;
+	}
+	public void setStorage(Storage storage) {
+		this.storage = storage;
+	}
+	public Dept getDept() {
+		return dept;
+	}
+	public void setDept(Dept dept) {
+		this.dept = dept;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 }
