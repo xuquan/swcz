@@ -31,11 +31,19 @@ public class MainActivity extends Activity {
 				FragmentTransaction transaction = fm.beginTransaction();
 				Fragment fragment = FragmentFactory.getInstanceByIndex(checkedId);
 				transaction.replace(R.id.content, fragment);
-				transaction.addToBackStack(null);
+				//transaction.addToBackStack(null);
 				transaction.commit();
 			}
 		});
 		
+		initIndexFragment();
+	}
+	
+	private void initIndexFragment(){
+		FragmentTransaction transaction = fm.beginTransaction();
+		Fragment fragment = FragmentFactory.getInstanceByIndex(R.id.rb_index);
+		transaction.replace(R.id.content, fragment);
+		transaction.commit();
 	}
 	
 	@Override
