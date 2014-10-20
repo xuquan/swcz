@@ -1,6 +1,7 @@
 package com.jm.swcz.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import android.text.TextUtils;
 
@@ -25,6 +26,7 @@ public class MaterialService {
 		boolean flag = false;
 		String materialId = material.getMaterial_id();
 		if(TextUtils.isEmpty(materialId)){
+			material.setMaterial_id(UUID.randomUUID().toString());
 			flag = materialDao.saveMaterial(material);
 		}else{
 			flag = materialDao.updateMaterial(material);
@@ -42,9 +44,11 @@ public class MaterialService {
 	
 	public Material findMaterialById(String materialId){
 		Material material = materialDao.findMaterialById(materialId);
-		String materialTypeId = material.getMaterial_type_id();
-		MaterialType mt = materialTypeDao.findMaterialTypeById(materialTypeId);
-		material.setMaterialType(mt);
+		if(material!=null){
+			String materialTypeId = material.getMaterial_type_id();
+			MaterialType mt = materialTypeDao.findMaterialTypeById(materialTypeId);
+			material.setMaterialType(mt);
+		}
 		return material;
 	}
 	

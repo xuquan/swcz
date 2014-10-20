@@ -20,11 +20,11 @@ public class FragmentFactory {
 		case R.id.rb_dismounting:
             fragment = new DismountingFragment();
             break;
+		case R.id.rb_material:
+            fragment = new MaterialFragment();
+            break;
         case R.id.rb_decision:
             fragment = new DecisionFragment();
-            break;
-        case R.id.rb_material:
-            fragment = new MaterialFragment();
             break;
         case R.id.rb_more:
             fragment = new MoreFragment();

@@ -62,11 +62,10 @@ public class DBHelper extends SQLiteOpenHelper {
 		String materialCreateSql = "create table t_material (material_id varchar2 primary key," +
 				"material_type_id varchar2,material_code varchar2,material_name_cn varchar2," +
 				"material_name_en varchar2,specifications varchar2,material_no varchar2," +
-				"size_weight varchar2,other_tech_data varchar2,safe_storage varchar2," +
+				"size_weight varchar2,reality_storage varchar2," +
 				"legal_storage varchar2,amount varchar2,storage_up_limit varchar2," +
-				"storage_down_limit varchar2,unit varchar2,storage_id varchar2," +
-				"manufacturer_code varchar2,manufacturer_name varchar2,manufacturer_reference_number varchar2," +
-				"internal_price varchar2,internal_price_unit varchar2,enter_price varchar2,enter_price_unit varchar2," +
+				"storage_down_limit varchar2,storage_id varchar2," +
+				"manufacturer_code varchar2,manufacturer_name varchar2," +
 				"dept_id varchar2,duty_person varchar2,remark varchar2,user_id varchar2,operate_time varchar2)";
 		db.execSQL(materialCreateSql);
 	}

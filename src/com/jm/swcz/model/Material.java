@@ -15,22 +15,15 @@ public class Material {
 	private String specifications;
 	private String material_no;
 	private String size_weight;
-	private String other_tech_data;
-	private String safe_storage;
 	private String legal_storage;
+	private String reality_storage;
 	private String amount;
 	private String storage_up_limit;
 	private String storage_down_limit;
-	private String unit;
 	private String storage_id;
 	private Storage storage;
 	private String manufacturer_code;
 	private String manufacturer_name;
-	private String manufacturer_reference_number;
-	private String internal_price;
-	private String internal_price_unit;
-	private String enter_price;
-	private String enter_price_unit;
 	private String dept_id;
 	private Dept dept;
 	private String duty_person;
@@ -87,17 +80,11 @@ public class Material {
 	public void setSize_weight(String size_weight) {
 		this.size_weight = size_weight;
 	}
-	public String getOther_tech_data() {
-		return other_tech_data;
+	public String getReality_storage() {
+		return reality_storage;
 	}
-	public void setOther_tech_data(String other_tech_data) {
-		this.other_tech_data = other_tech_data;
-	}
-	public String getSafe_storage() {
-		return safe_storage;
-	}
-	public void setSafe_storage(String safe_storage) {
-		this.safe_storage = safe_storage;
+	public void setReality_storage(String reality_storage) {
+		this.reality_storage = reality_storage;
 	}
 	public String getLegal_storage() {
 		return legal_storage;
@@ -123,12 +110,6 @@ public class Material {
 	public void setStorage_down_limit(String storage_down_limit) {
 		this.storage_down_limit = storage_down_limit;
 	}
-	public String getUnit() {
-		return unit;
-	}
-	public void setUnit(String unit) {
-		this.unit = unit;
-	}
 	public String getStorage_id() {
 		return storage_id;
 	}
@@ -146,37 +127,6 @@ public class Material {
 	}
 	public void setManufacturer_name(String manufacturer_name) {
 		this.manufacturer_name = manufacturer_name;
-	}
-	public String getManufacturer_reference_number() {
-		return manufacturer_reference_number;
-	}
-	public void setManufacturer_reference_number(
-			String manufacturer_reference_number) {
-		this.manufacturer_reference_number = manufacturer_reference_number;
-	}
-	public String getInternal_price() {
-		return internal_price;
-	}
-	public void setInternal_price(String internal_price) {
-		this.internal_price = internal_price;
-	}
-	public String getInternal_price_unit() {
-		return internal_price_unit;
-	}
-	public void setInternal_price_unit(String internal_price_unit) {
-		this.internal_price_unit = internal_price_unit;
-	}
-	public String getEnter_price() {
-		return enter_price;
-	}
-	public void setEnter_price(String enter_price) {
-		this.enter_price = enter_price;
-	}
-	public String getEnter_price_unit() {
-		return enter_price_unit;
-	}
-	public void setEnter_price_unit(String enter_price_unit) {
-		this.enter_price_unit = enter_price_unit;
 	}
 	public String getDept_id() {
 		return dept_id;

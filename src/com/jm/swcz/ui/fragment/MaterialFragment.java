@@ -3,6 +3,8 @@ package com.jm.swcz.ui.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Activity;
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
@@ -13,6 +15,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -40,12 +45,36 @@ public class MaterialFragment extends ListFragment {
 	private PageModel<Material> pageModel;
 	private int pageSize = 10;
 	private FragmentManager fm;
+	private MenuItem menuItem;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		fm = getFragmentManager();
 		materialService = (MaterialService) BeanFactory.getInstance().getBean(MaterialService.class);
-		getActivity().setTitle("物料");
+		Activity activity = getActivity();
+		activity.setTitle("物料");
+		setHasOptionsMenu(true);
+	}
+	
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		inflater.inflate(R.menu.material, menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()){
+		case R.id.menu_material_add:
+			menuItem = item;
+			FragmentTransaction transaction = fm.beginTransaction();
+			Fragment fragment = new MaterialDetailFragment();
+			transaction.replace(R.id.content, fragment);
+			transaction.addToBackStack(null);
+			transaction.commit();
+			break;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 	
 	@Override
@@ -157,7 +186,6 @@ public class MaterialFragment extends ListFragment {
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		Material material = (Material) adapter.getItem(position);
-		fm = getFragmentManager();
 		FragmentTransaction transaction = fm.beginTransaction();
 		MaterialDetailFragment mdf = new MaterialDetailFragment();
 		Bundle args = new Bundle();
@@ -184,4 +212,5 @@ public class MaterialFragment extends ListFragment {
 			}
 		};
 	};
+	
 }

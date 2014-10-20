@@ -40,21 +40,14 @@ public class MaterialDetailFragment extends Fragment {
 	private EditText et_specifications;
 	private EditText et_material_no;
 	private EditText et_size_weight;
-	private EditText et_other_tech_data;
-	private EditText et_safe_storage;
 	private EditText et_legal_storage;
+	private EditText et_reality_storage;
 	private EditText et_amount;
 	private EditText et_storage_up_limit;
 	private EditText et_storage_down_limit;
-	private EditText et_unit;
 	private EditText et_storage_id;
 	private EditText et_manufacturer_code;
 	private EditText et_manufacturer_name;
-	private EditText et_manufacturer_reference_number;
-	private EditText et_internal_price;
-	private EditText et_internal_price_unit;
-	private EditText et_enter_price;
-	private EditText et_enter_price_unit;
 	private EditText et_dept_id;
 	private EditText et_duty_person;
 	private EditText et_remark;
@@ -70,7 +63,11 @@ public class MaterialDetailFragment extends Fragment {
 		materialTypeService = (MaterialTypeService)BeanFactory.getInstance().getBean(MaterialTypeService.class);
 		materialService = (MaterialService) BeanFactory.getInstance().getBean(MaterialService.class);
 		loginService = (LoginService) BeanFactory.getInstance().getBean(LoginService.class);
-		String materialId = getArguments().getString("material_id");
+		String materialId = "";
+		Bundle bundle = getArguments();
+		if(bundle!=null){
+			materialId = bundle.getString("material_id");
+		}
 		material = materialService.findMaterialById(materialId);
 		materialTypeList = materialTypeService.findMaterialTypeList();
 		if(materialTypeList==null || materialTypeList.size()==0){
@@ -104,21 +101,14 @@ public class MaterialDetailFragment extends Fragment {
 		et_specifications = (EditText) view.findViewById(R.id.et_specifications);
 		et_material_no = (EditText) view.findViewById(R.id.et_material_no);
 		et_size_weight = (EditText) view.findViewById(R.id.et_size_weight);
-		et_other_tech_data = (EditText) view.findViewById(R.id.et_other_tech_data);
-		et_safe_storage = (EditText) view.findViewById(R.id.et_safe_storage);
+		et_reality_storage = (EditText) view.findViewById(R.id.et_reality_storage);
 		et_legal_storage = (EditText) view.findViewById(R.id.et_legal_storage);
 		et_amount = (EditText) view.findViewById(R.id.et_amount);
 		et_storage_up_limit = (EditText) view.findViewById(R.id.et_storage_up_limit);
 		et_storage_down_limit = (EditText) view.findViewById(R.id.et_storage_down_limit);
-		et_unit = (EditText) view.findViewById(R.id.et_unit);
 		et_storage_id = (EditText) view.findViewById(R.id.et_storage_id);
 		et_manufacturer_code = (EditText) view.findViewById(R.id.et_manufacturer_code);
 		et_manufacturer_name = (EditText) view.findViewById(R.id.et_manufacturer_name);
-		et_manufacturer_reference_number = (EditText) view.findViewById(R.id.et_manufacturer_reference_number);
-		et_internal_price = (EditText) view.findViewById(R.id.et_internal_price);
-		et_internal_price_unit = (EditText) view.findViewById(R.id.et_internal_price_unit);
-		et_enter_price = (EditText) view.findViewById(R.id.et_enter_price);
-		et_enter_price_unit = (EditText) view.findViewById(R.id.et_enter_price_unit);
 		et_dept_id = (EditText) view.findViewById(R.id.et_dept_id);
 		et_duty_person = (EditText) view.findViewById(R.id.et_duty_person);
 		et_remark = (EditText) view.findViewById(R.id.et_remark);
@@ -133,21 +123,14 @@ public class MaterialDetailFragment extends Fragment {
 			et_specifications.setText(material.getSpecifications());
 			et_material_no.setText(material.getMaterial_no());
 			et_size_weight.setText(material.getSize_weight());
-			et_other_tech_data.setText(material.getOther_tech_data());
-			et_safe_storage.setText(material.getSafe_storage());
 			et_legal_storage.setText(material.getLegal_storage());
+			et_reality_storage.setText(material.getReality_storage());
 			et_amount.setText(material.getAmount());
 			et_storage_up_limit.setText(material.getStorage_up_limit());
 			et_storage_down_limit.setText(material.getStorage_down_limit());
-			et_unit.setText(material.getUnit());
 			et_storage_id.setText(material.getStorage_id());
 			et_manufacturer_code.setText(material.getManufacturer_code());
 			et_manufacturer_name.setText(material.getManufacturer_name());
-			et_manufacturer_reference_number.setText(material.getManufacturer_reference_number());
-			et_internal_price.setText(material.getInternal_price());
-			et_internal_price_unit.setText(material.getInternal_price_unit());
-			et_enter_price.setText(material.getEnter_price());
-			et_enter_price_unit.setText(material.getEnter_price_unit());
 			et_dept_id.setText(material.getDept_id());
 			et_duty_person.setText(material.getDuty_person());
 			et_remark.setText(material.getRemark());
@@ -166,7 +149,9 @@ public class MaterialDetailFragment extends Fragment {
 		public void onItemSelected(AdapterView<?> parent, View view, int position,
 				long id) {
 			MaterialType materialType = materialTypeAdapter.getItem(position);
-			material.setMaterial_type_id(materialType.getMaterial_type_id());
+			if(material!=null && materialType!=null){
+				material.setMaterial_type_id(materialType.getMaterial_type_id());
+			}
 		}
 
 		@Override
@@ -189,21 +174,14 @@ public class MaterialDetailFragment extends Fragment {
 			material.setSpecifications(et_specifications.getText().toString());
 			material.setMaterial_no(et_material_no.getText().toString());
 			material.setSize_weight(et_size_weight.getText().toString());
-			material.setOther_tech_data(et_other_tech_data.getText().toString());
-			material.setSafe_storage(et_safe_storage.getText().toString());
+			material.setReality_storage(et_reality_storage.getText().toString());
 			material.setLegal_storage(et_legal_storage.getText().toString());
 			material.setAmount(et_amount.getText().toString());
 			material.setStorage_up_limit(et_storage_up_limit.getText().toString());
 			material.setStorage_down_limit(et_storage_down_limit.getText().toString());
-			material.setUnit(et_unit.getText().toString());
 			material.setStorage_id(et_storage_id.getText().toString());
 			material.setManufacturer_code(et_manufacturer_code.getText().toString());
 			material.setManufacturer_name(et_manufacturer_name.getText().toString());
-			material.setManufacturer_reference_number(et_manufacturer_reference_number.getText().toString());
-			material.setInternal_price(et_internal_price.getText().toString());
-			material.setInternal_price_unit(et_internal_price_unit.getText().toString());
-			material.setEnter_price(et_enter_price.getText().toString());
-			material.setEnter_price_unit(et_enter_price_unit.getText().toString());
 			material.setDept_id(et_dept_id.getText().toString());
 			material.setDuty_person(et_duty_person.getText().toString());
 			material.setRemark(et_remark.getText().toString());

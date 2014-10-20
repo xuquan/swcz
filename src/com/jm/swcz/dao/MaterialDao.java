@@ -18,19 +18,16 @@ public class MaterialDao{
 	public boolean saveMaterial(Material material){
 		String sql = "insert into t_material (material_id,material_type_id,material_code," +
 				"material_name_cn,material_name_en,specifications," +
-				"material_no,size_weight,other_tech_data,safe_storage," +
-				"legal_storage,amount,storage_up_limit,storage_down_limit,unit,storage_id," +
-				"manufacturer_code,manufacturer_name,manufacturer_reference_number," +
-				"internal_price,internal_price_unit,enter_price,enter_price_unit," +
+				"material_no,size_weight,reality_storage," +
+				"legal_storage,amount,storage_up_limit,storage_down_limit,storage_id," +
+				"manufacturer_code,manufacturer_name," +
 				"dept_id,duty_person,remark,user_id,operate_time)" +
-				" values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				" values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		Object[] bindArgs = new Object[]{material.getMaterial_id(),material.getMaterial_type_id(),material.getMaterial_code(),
 				material.getMaterial_name_cn(),material.getMaterial_name_en(),material.getSpecifications(),
-				material.getMaterial_no(),material.getSize_weight(),material.getOther_tech_data(),material.getSafe_storage(),
+				material.getMaterial_no(),material.getSize_weight(),material.getReality_storage(),
 				material.getLegal_storage(),material.getAmount(),material.getStorage_up_limit(),material.getStorage_down_limit(),
-				material.getUnit(),material.getStorage_id(),
-				material.getManufacturer_code(),material.getManufacturer_name(),material.getManufacturer_reference_number(),
-				material.getInternal_price(),material.getInternal_price_unit(),material.getEnter_price(),material.getEnter_price_unit(),
+				material.getStorage_id(),material.getManufacturer_code(),material.getManufacturer_name(),
 				material.getDept_id(),material.getDuty_person(),material.getRemark(),material.getUser_id(),material.getOperate_time()};
 		return dbMgr.updateBySQL(sql, bindArgs);
 	}
@@ -38,18 +35,15 @@ public class MaterialDao{
 	public boolean updateMaterial(Material material){
 		String sql = "update t_material set material_type_id=?,material_code=?," +
 				"material_name_cn=?,material_name_en=?,specifications=?," +
-				"material_no=?,size_weight=?,other_tech_data=?,safe_storage=?," +
-				"legal_storage=?,amount=?,storage_up_limit=?,storage_down_limit=?,unit=?,storage_id=?," +
-				"manufacturer_code=?,manufacturer_name=?,manufacturer_reference_number=?," +
-				"internal_price=?,internal_price_unit=?,enter_price=?,enter_price_unit=?," +
+				"material_no=?,size_weight=?,reality_storage=?," +
+				"legal_storage=?,amount=?,storage_up_limit=?,storage_down_limit=?,storage_id=?," +
+				"manufacturer_code=?,manufacturer_name=?," +
 				"dept_id=?,duty_person=?,remark=?,user_id=?,operate_time=? where material_id=?";
 		Object[] bindArgs = new Object[]{material.getMaterial_type_id(),material.getMaterial_code(),
 				material.getMaterial_name_cn(),material.getMaterial_name_en(),material.getSpecifications(),
-				material.getMaterial_no(),material.getSize_weight(),material.getOther_tech_data(),material.getSafe_storage(),
+				material.getMaterial_no(),material.getSize_weight(),material.getReality_storage(),
 				material.getLegal_storage(),material.getAmount(),material.getStorage_up_limit(),material.getStorage_down_limit(),
-				material.getUnit(),material.getStorage_id(),
-				material.getManufacturer_code(),material.getManufacturer_name(),material.getManufacturer_reference_number(),
-				material.getInternal_price(),material.getInternal_price_unit(),material.getEnter_price(),material.getEnter_price_unit(),
+				material.getStorage_id(),material.getManufacturer_code(),material.getManufacturer_name(),
 				material.getDept_id(),material.getDuty_person(),material.getRemark(),material.getUser_id(),material.getOperate_time(),material.getMaterial_id()};
 		return dbMgr.updateBySQL(sql, bindArgs);
 	}
@@ -70,13 +64,6 @@ public class MaterialDao{
 	
 	public List<Material> findMaterialList(int pageNo, int pageSize){
 		List<Material> list = null;
-//		String[] columns = new String[]{"material_id","material_type_id","material_code",
-//				"material_name_cn","material_name_en","specifications",
-//				"material_no","size_weight","other_tech_data","safe_storage",
-//				"legal_storage","amount","storage_up_limit","storage_down_limit","unit","storage_id",
-//				"manufacturer_code","manufacturer_name","manufacturer_reference_number",
-//				"internal_price","internal_price_unit","enter_price","enter_price_unit",
-//				"dept_id","duty_person","remark","user_id","operate_time"};
 		String sql = "select t1.* from t_material t1 limit ?,?";
 		int pageStart = (pageNo-1) * pageSize;
 		String[] selectionArgs = new String[]{String.valueOf(pageStart),String.valueOf(pageSize)};

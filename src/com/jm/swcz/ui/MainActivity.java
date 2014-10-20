@@ -5,9 +5,11 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.jm.swcz.R;
 import com.jm.swcz.factory.FragmentFactory;
@@ -16,7 +18,7 @@ public class MainActivity extends Activity {
 	public static final int MENU_EXIT = 3;
 	private FragmentManager fm;
 	private RadioGroup rg;
-	
+	private long exitTime = 0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -35,7 +37,6 @@ public class MainActivity extends Activity {
 				transaction.commit();
 			}
 		});
-		
 		initIndexFragment();
 	}
 	
@@ -57,8 +58,24 @@ public class MainActivity extends Activity {
 		switch(item.getItemId()){
 		case MENU_EXIT:
 			finish();
+			System.exit(0);
 			break;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if(keyCode==KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN){
+			if(System.currentTimeMillis()-exitTime > 2000){
+				Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_LONG).show();                                
+	            exitTime = System.currentTimeMillis();  
+			}else{
+				finish();
+				System.exit(0);
+			}
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 }

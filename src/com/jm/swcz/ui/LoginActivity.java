@@ -113,6 +113,7 @@ public class LoginActivity extends Activity implements OnClickListener{
 			
 			final Intent intent = new Intent(LoginActivity.this,MainActivity.class);
 			startActivity(intent);
+			finish();
 			break;
 		case R.id.tv_new_user:
 			final Intent registerIntent = new Intent(LoginActivity.this,RegisterActivity.class);

@@ -26,7 +26,7 @@ public class WelcomeActivity extends Activity {
 			@Override
 			public void run() {
 				try {
-					Thread.sleep(2000);
+					Thread.sleep(1000);
 					//获取应用的上下文，生命周期是整个应用，应用结束才会结束
 					getApplicationContext().startActivity(intent);
 					finish();
