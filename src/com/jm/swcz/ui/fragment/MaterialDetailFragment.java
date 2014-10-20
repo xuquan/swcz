@@ -9,6 +9,9 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -56,10 +59,12 @@ public class MaterialDetailFragment extends Fragment {
 	private Button btn_save_material;
 	private FragmentManager fm;
 	private ArrayAdapter<MaterialType> materialTypeAdapter;
+	private MenuItem menuItem;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setHasOptionsMenu(true);
 		materialTypeService = (MaterialTypeService)BeanFactory.getInstance().getBean(MaterialTypeService.class);
 		materialService = (MaterialService) BeanFactory.getInstance().getBean(MaterialService.class);
 		loginService = (LoginService) BeanFactory.getInstance().getBean(LoginService.class);
@@ -70,21 +75,29 @@ public class MaterialDetailFragment extends Fragment {
 		}
 		material = materialService.findMaterialById(materialId);
 		materialTypeList = materialTypeService.findMaterialTypeList();
-		if(materialTypeList==null || materialTypeList.size()==0){
-			for(int i=1;i<=20;i++){
-				MaterialType mt = new MaterialType();
-				mt.setMaterial_type_name("物料类别"+i);
-				mt.setParent_material_type_id("1");
-				mt.setRemark("备注"+i);
-				mt.setUser_id("1");
-				mt.setOperate_time(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-				materialTypeService.saveMaterialType(mt);
-			}
-		}
 		materialTypeAdapter = new ArrayAdapter<MaterialType>(getActivity(),
 				android.R.layout.simple_spinner_item,materialTypeList);
 		materialTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		fm = getFragmentManager();
+	}
+	
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		inflater.inflate(R.menu.material_detail, menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()){
+		case R.id.menu_material_del:
+			menuItem = item;
+			if(material!=null){
+				materialService.deleteMaterial(material.getMaterial_id());
+			}
+			fm.popBackStack();
+			break;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 	
 	@Override

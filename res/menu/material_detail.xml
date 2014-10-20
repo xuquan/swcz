@@ -3,9 +3,9 @@
     tools:context="com.jm.swcz.MainActivity" >
 
 	<item 
-	    android:id="@+id/menu_material_add"
-	    android:icon="@drawable/action_add"
+	    android:id="@+id/menu_material_del"
+	    android:icon="@drawable/action_del"
 	    android:orderInCategory="101"
 	    android:showAsAction="always"
-	    android:title="添加"/>
+	    android:title="删除"/>
 </menu>
