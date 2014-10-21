@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#B6A395">
+    android:background="@drawable/index_bg">
 
         <TableLayout 
 	        android:id="@+id/ly_material_detail_1"
@@ -69,7 +69,6 @@
 		    
 		    <TableRow
 		        android:layout_width="fill_parent"
-		        android:background="#B6A395"
 		        android:layout_height="40dp">
 			    <TextView
 				        android:id="@+id/tv_material_name_en"
@@ -109,7 +108,6 @@
 			 
 			<TableRow
 		        android:layout_width="fill_parent"
-		        android:background="#B6A395"
 		        android:layout_height="40dp">
 			    <TextView
 			        android:id="@+id/tv_size_weight"
@@ -145,7 +143,6 @@
 			 
 			<TableRow
 		        android:layout_width="fill_parent"
-		        android:background="#B6A395"
 		        android:layout_height="40dp">
 			    <TextView
 			        android:id="@+id/tv_legal_storage"
@@ -231,7 +228,6 @@
 			 
 			<TableRow
 		        android:layout_width="fill_parent"
-		        android:background="#B6A395"
 		        android:layout_height="40dp">
 			    <TextView
 			        android:id="@+id/tv_storage_id"
@@ -288,7 +284,6 @@
 			 
 			<TableRow
 		        android:layout_width="fill_parent"
-		        android:background="#B6A395"
 		        android:layout_height="40dp">
 			    <TextView
 			        android:id="@+id/tv_dept_id"
@@ -344,7 +339,6 @@
 			 
 			<TableRow
 		        android:layout_width="fill_parent"
-		        android:background="#B6A395"
 		        android:layout_height="40dp">
 			    <TextView
 			        android:id="@+id/tv_user_id"
@@ -381,14 +375,17 @@
 			
 			<TableRow
 		        android:layout_width="fill_parent"
-		        android:layout_height="40dp">
+		        android:layout_height="40dp"
+		        android:layout_marginTop="20dp"
+		        android:padding="5dp">
 
 				<Button
 				    android:id="@+id/btn_save_material"
-				    android:layout_width="wrap_content"
-				    android:layout_height="wrap_content"
-				    android:layout_gravity="center"
-				    android:text="保存" />
+				    android:layout_width="fill_parent"
+				    android:layout_height="fill_parent"
+				    android:padding="10dp"
+				    android:textColor="#FFFFFF"
+				    android:text="创建" />
 
 			</TableRow>
 	    </TableLayout>

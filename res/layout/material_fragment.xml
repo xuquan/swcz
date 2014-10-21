@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B6A395">
+    android:background="@drawable/index_bg">
 
     <SearchView
         android:id="@+id/sv_material"
@@ -24,6 +24,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/sv_material"
         android:scrollbars="vertical"
+        android:layout_marginTop="10dp"
         android:padding="5dp">
 
     </ListView>
