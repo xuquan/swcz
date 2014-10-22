@@ -20,7 +20,7 @@ import com.jm.swcz.ui.fragment.MaterialDetailFragment;
  * @author lenovo
  *
  */
-public class DeptActivity extends ListActivity {
+public class DeptDetailActivity extends ListActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class DeptActivity extends ListActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()){
 		case R.id.action_bar_add:
-			Intent intent = new Intent(DeptActivity.this,DeptDetailActivity.class);
+			Intent intent = new Intent(DeptDetailActivity.this,MaterialDetailFragment.class);
 			startActivity(intent);
 			break;
 		}

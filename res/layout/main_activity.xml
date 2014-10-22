@@ -49,8 +49,8 @@
         <RadioButton
             android:id="@+id/rb_more"
             style="@style/main_tab_style"
-            android:drawableTop="@drawable/main_tab_more_selector"
-            android:text="更多" />
+            android:drawableTop="@drawable/main_tab_setting_selector"
+            android:text="设置" />
 
     </RadioGroup>
 </LinearLayout>

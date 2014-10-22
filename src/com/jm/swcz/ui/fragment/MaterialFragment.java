@@ -59,13 +59,13 @@ public class MaterialFragment extends ListFragment {
 	
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		inflater.inflate(R.menu.material, menu);
+		inflater.inflate(R.menu.action_bar_add, menu);
 	}
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()){
-		case R.id.menu_material_add:
+		case R.id.action_bar_add:
 			menuItem = item;
 			FragmentTransaction transaction = fm.beginTransaction();
 			Fragment fragment = new MaterialDetailFragment();

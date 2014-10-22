@@ -9,20 +9,20 @@ import android.widget.TextView;
 
 import com.jm.swcz.R;
 
-public class MoreFragment extends Fragment {
+public class SettingFragment extends Fragment {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		getActivity().setTitle("更多");
+		getActivity().setTitle("设置");
 	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.more_fragment, null);
+		View view = inflater.inflate(R.layout.setting_fragment, null);
 		TextView tv = (TextView) view.findViewById(R.id.txt_content);
-		tv.setText("这是更多界面");
+		tv.setText("这是设置界面");
 		return view;
 	}
 }

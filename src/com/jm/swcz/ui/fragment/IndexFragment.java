@@ -81,7 +81,7 @@ public class IndexFragment extends Fragment {
 	private Integer[] layouts = {
 		R.layout.dept_activity,
 		R.layout.material_type_activity,
-		R.id.rb_dismounting,
+		R.layout.material_detail_fragment,
 		R.id.rb_material,
 		R.id.rb_more,
 		R.id.rg_tab

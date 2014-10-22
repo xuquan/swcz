@@ -7,7 +7,7 @@ import com.jm.swcz.ui.fragment.DecisionFragment;
 import com.jm.swcz.ui.fragment.DismountingFragment;
 import com.jm.swcz.ui.fragment.IndexFragment;
 import com.jm.swcz.ui.fragment.MaterialFragment;
-import com.jm.swcz.ui.fragment.MoreFragment;
+import com.jm.swcz.ui.fragment.SettingFragment;
 
 public class FragmentFactory {
 
@@ -27,7 +27,7 @@ public class FragmentFactory {
             fragment = new DecisionFragment();
             break;
         case R.id.rb_more:
-            fragment = new MoreFragment();
+            fragment = new SettingFragment();
             break;
 		}
 		return fragment;
