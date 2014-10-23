@@ -1,5 +1,6 @@
 package com.jm.swcz.service;
 
+import java.util.List;
 import java.util.UUID;
 
 import android.text.TextUtils;
@@ -39,5 +40,9 @@ public class DeptService {
 	
 	public Dept findDeptById(String deptId){
 		return deptDao.findDeptById(deptId);
+	}
+	
+	public List<Dept> findDeptList(){
+		return deptDao.findDeptList();
 	}
 }

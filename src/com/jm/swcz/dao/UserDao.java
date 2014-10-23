@@ -1,5 +1,7 @@
 package com.jm.swcz.dao;
 
+import android.text.TextUtils;
+
 import com.jm.swcz.db.DBMgr;
 import com.jm.swcz.factory.BeanFactory;
 import com.jm.swcz.model.User;
@@ -36,7 +38,10 @@ public class UserDao{
 	public User findUserById(String userId){
 		User user = null;
 		String sql = "select * from t_user where user_id=?";
-		String[] selectionArgs = new String[]{userId};
+		String[] selectionArgs = new String[]{};
+		if(!TextUtils.isEmpty(userId)){
+			selectionArgs = new String[]{userId};
+		}
 		user = dbMgr.querySingleCursor(sql, selectionArgs, User.class);
 		return user;
 	}

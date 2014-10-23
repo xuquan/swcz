@@ -385,7 +385,7 @@
 				    android:layout_height="fill_parent"
 				    android:padding="10dp"
 				    android:textColor="#FFFFFF"
-				    android:text="创建" />
+				    android:text="保存" />
 
 			</TableRow>
 	    </TableLayout>

@@ -29,7 +29,7 @@
         <activity android:name="com.jm.swcz.ui.activity.DeptActivity"></activity>
         <activity android:name="com.jm.swcz.ui.activity.DeptDetailActivity"></activity>
         <activity android:name="com.jm.swcz.ui.activity.MaterialTypeActivity"></activity>
-        <activity android:name="com.jm.swcz.ui.activity.TreeActivity"></activity>
+        <activity android:name="com.jm.swcz.ui.activity.MaterialTypeDetailActivity"></activity>
         
     </application>
 

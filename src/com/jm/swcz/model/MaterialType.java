@@ -11,6 +11,7 @@ public class MaterialType {
 	private String material_type_name;
 	private String remark;
 	private String user_id;
+	private User user;
 	private String operate_time;
 	
 	public String getMaterial_type_id() {
@@ -77,6 +78,12 @@ public class MaterialType {
 		} else if (!material_type_id.equals(other.material_type_id))
 			return false;
 		return true;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 }

@@ -83,13 +83,13 @@ public class MaterialDetailFragment extends Fragment {
 	
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		inflater.inflate(R.menu.material_detail, menu);
+		inflater.inflate(R.menu.action_bar_del, menu);
 	}
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()){
-		case R.id.menu_material_del:
+		case R.id.action_bar_del:
 			menuItem = item;
 			if(material!=null){
 				materialService.deleteMaterial(material.getMaterial_id());

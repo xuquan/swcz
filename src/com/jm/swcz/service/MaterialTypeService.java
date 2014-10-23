@@ -6,8 +6,10 @@ import java.util.UUID;
 import android.text.TextUtils;
 
 import com.jm.swcz.dao.MaterialTypeDao;
+import com.jm.swcz.dao.UserDao;
 import com.jm.swcz.factory.BeanFactory;
 import com.jm.swcz.model.MaterialType;
+import com.jm.swcz.model.User;
 
 /**
  * 物料类别服务层
@@ -17,6 +19,7 @@ import com.jm.swcz.model.MaterialType;
 public class MaterialTypeService {
 	
 	private MaterialTypeDao materialTypeDao = (MaterialTypeDao) BeanFactory.getInstance().getBean(MaterialTypeDao.class);
+	private UserDao userDao = (UserDao) BeanFactory.getInstance().getBean(UserDao.class);
 	
 	public boolean saveMaterialType(MaterialType materialType){
 		boolean flag = false;
@@ -39,7 +42,12 @@ public class MaterialTypeService {
 	}
 	
 	public MaterialType findMaterialTypeById(String materialTypeId){
-		return materialTypeDao.findMaterialTypeById(materialTypeId);
+		MaterialType materialType = materialTypeDao.findMaterialTypeById(materialTypeId);
+		if(materialType!=null){
+			User user = userDao.findUserById(materialType.getUser_id());
+			materialType.setUser(user);
+		}
+		return materialType;
 	}
 	
 	public List<MaterialType> findMaterialTypeList(){

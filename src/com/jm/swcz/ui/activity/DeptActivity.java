@@ -10,10 +10,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.jm.swcz.R;
-import com.jm.swcz.ui.fragment.MaterialDetailFragment;
+import com.jm.swcz.factory.BeanFactory;
+import com.jm.swcz.model.Dept;
+import com.jm.swcz.service.DeptService;
 
 /**
  * 部门的界面
@@ -21,22 +25,39 @@ import com.jm.swcz.ui.fragment.MaterialDetailFragment;
  *
  */
 public class DeptActivity extends ListActivity {
-
+	private DeptService deptService;
+	private SimpleAdapter adapter;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setTitle("部门");
+		deptService = (DeptService) BeanFactory.getInstance().getBean(DeptService.class);
+		loadData();
+	}
+	
+	private void loadData(){
+		List<Dept> deptList = deptService.findDeptList();
 		List<Map<String, Object>> data = new ArrayList<Map<String,Object>>();
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("tv_dept_name", "省公司");
-		data.add(map);
-		map = new HashMap<String,Object>();
+		if(deptList!=null && deptList.size()>0){
+			Map<String,Object> map = null;
+			for(Dept dept : deptList){
+				map = new HashMap<String,Object>();
+				map.put("tv_dept_id", dept.getDept_id());
+				map.put("tv_dept_name", dept.getDept_name());
+				data.add(map);
+			}
+		}
+		
 		String[] from = new String[]{"tv_dept_name"};
-		map.put("tv_dept_name", "广州公司");
-		data.add(map);
 		int[] to = new int[]{R.id.tv_dept_name};
-		SimpleAdapter adapter = new SimpleAdapter(this, data, R.layout.dept_activity, from, to);
+		adapter = new SimpleAdapter(this, data, R.layout.dept_activity, from, to);
 		setListAdapter(adapter);
+	}
+	
+	@Override
+	protected void onResume() {
+		loadData();
+		super.onResume();
 	}
 	
 	@Override
@@ -54,5 +75,15 @@ public class DeptActivity extends ListActivity {
 			break;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		Map<String,Object> data = (Map<String, Object>) adapter.getItem(position);
+		String deptId = (String) data.get("tv_dept_id");
+		Intent intent = new Intent(DeptActivity.this,DeptDetailActivity.class);
+		intent.putExtra("deptId", deptId);
+		startActivity(intent);
+		super.onListItemClick(l, v, position, id);
 	}
 }
