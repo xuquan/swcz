@@ -30,7 +30,17 @@
         <activity android:name="com.jm.swcz.ui.activity.DeptDetailActivity"></activity>
         <activity android:name="com.jm.swcz.ui.activity.MaterialTypeActivity"></activity>
         <activity android:name="com.jm.swcz.ui.activity.MaterialTypeDetailActivity"></activity>
-        
+        <activity android:name="com.jm.swcz.ui.activity.MaterialDetailActivity"></activity>
+        <activity android:name="com.jm.swcz.ui.activity.StorageActivity"></activity>
+        <activity android:name="com.jm.swcz.ui.activity.StorageDetailActivity"></activity>
+        <activity android:name="com.jm.swcz.ui.activity.ModifyPasswordActivity"></activity>
+        <activity android:name="com.jm.swcz.ui.activity.MemoActivity"></activity>
+        <activity android:name="com.jm.swcz.ui.activity.MemoDetailActivity"></activity>
+        <activity android:name="com.jm.swcz.ui.activity.FaultActivity"></activity>
+        <activity android:name="com.jm.swcz.ui.activity.FaultDetailActivity"></activity>
+        <activity android:name="com.jm.swcz.ui.activity.FaultReasonActivity"></activity>
+        <activity android:name="com.jm.swcz.ui.activity.FaultReasonDetailActivity"></activity>
+        <activity android:name="com.jm.swcz.ui.activity.DecisionDetailActivity"></activity>
     </application>
 
 </manifest>

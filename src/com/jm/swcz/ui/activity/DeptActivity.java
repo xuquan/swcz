@@ -30,6 +30,7 @@ public class DeptActivity extends ListActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.dept_activity);
 		this.setTitle("部门");
 		deptService = (DeptService) BeanFactory.getInstance().getBean(DeptService.class);
 		loadData();
@@ -50,7 +51,7 @@ public class DeptActivity extends ListActivity {
 		
 		String[] from = new String[]{"tv_dept_name"};
 		int[] to = new int[]{R.id.tv_dept_name};
-		adapter = new SimpleAdapter(this, data, R.layout.dept_activity, from, to);
+		adapter = new SimpleAdapter(this, data, R.layout.dept_item_activity, from, to);
 		setListAdapter(adapter);
 	}
 	

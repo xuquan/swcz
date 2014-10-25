@@ -16,7 +16,7 @@ public class Storage implements Serializable{
 	private String storage_name;
 	private String remark;
 	private String user_id;
-	private String user_name;
+	private User user;
 	private String ship_code;
 	private String operate_time;
 	
@@ -50,12 +50,6 @@ public class Storage implements Serializable{
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
-	public String getUser_name() {
-		return user_name;
-	}
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
-	}
 	public String getShip_code() {
 		return ship_code;
 	}
@@ -67,6 +61,41 @@ public class Storage implements Serializable{
 	}
 	public void setOperate_time(String operate_time) {
 		this.operate_time = operate_time;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((storage_id == null) ? 0 : storage_id.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Storage other = (Storage) obj;
+		if (storage_id == null) {
+			if (other.storage_id != null)
+				return false;
+		} else if (!storage_id.equals(other.storage_id))
+			return false;
+		return true;
+	}
+	
+	@Override
+	public String toString(){
+		return storage_name;
 	}
 	
 }

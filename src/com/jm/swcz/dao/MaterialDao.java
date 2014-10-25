@@ -2,6 +2,8 @@ package com.jm.swcz.dao;
 
 import java.util.List;
 
+import android.text.TextUtils;
+
 import com.jm.swcz.db.DBMgr;
 import com.jm.swcz.factory.BeanFactory;
 import com.jm.swcz.model.Material;
@@ -57,7 +59,10 @@ public class MaterialDao{
 	public Material findMaterialById(String materialId){
 		Material material = null;
 		String sql = "select * from t_material where material_id=?";
-		String[] selectionArgs = new String[]{materialId};
+		String[] selectionArgs = new String[]{};
+		if(!TextUtils.isEmpty(materialId)){
+			selectionArgs = new String[]{materialId};
+		}
 		material = dbMgr.querySingleCursor(sql, selectionArgs, Material.class);
 		return material;
 	}

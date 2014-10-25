@@ -53,4 +53,11 @@ public class UserDao{
 		user = dbMgr.querySingleCursor(sql, selectionArgs, User.class);
 		return user;
 	}
+	
+	public boolean modifyPassword(String userId,String password){
+		String sql = "update t_user set password=? where user_id=?";
+		Object[] bindArgs = new Object[]{password,userId};
+		boolean flag = dbMgr.updateBySQL(sql, bindArgs);
+		return flag;
+	}
 }

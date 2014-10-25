@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.app.LoaderManager.LoaderCallbacks;
+import android.content.Intent;
 import android.content.Loader;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,6 +32,7 @@ import com.jm.swcz.factory.BeanFactory;
 import com.jm.swcz.model.Material;
 import com.jm.swcz.model.PageModel;
 import com.jm.swcz.service.MaterialService;
+import com.jm.swcz.ui.activity.MaterialDetailActivity;
 import com.jm.swcz.ui.adapter.MaterialListAdapter;
 
 public class MaterialFragment extends ListFragment {
@@ -67,11 +67,8 @@ public class MaterialFragment extends ListFragment {
 		switch(item.getItemId()){
 		case R.id.action_bar_add:
 			menuItem = item;
-			FragmentTransaction transaction = fm.beginTransaction();
-			Fragment fragment = new MaterialDetailFragment();
-			transaction.replace(R.id.content, fragment);
-			transaction.addToBackStack(null);
-			transaction.commit();
+			Intent intent = new Intent(getActivity(),MaterialDetailActivity.class);
+			startActivity(intent);
 			break;
 		}
 		return super.onOptionsItemSelected(item);
@@ -176,24 +173,29 @@ public class MaterialFragment extends ListFragment {
 			
 		});
 		
+		loadData();
+		return view;
+	}
+	
+	private void loadData(){
 		pageModel = materialService.findMaterialList(1,pageSize);
 		materialList = pageModel.getList();
 		adapter = new MaterialListAdapter(getActivity(),materialList);
 		setListAdapter(adapter);
-		return view;
+	}
+	
+	@Override
+	public void onResume() {
+		loadData();
+		super.onResume();
 	}
 	
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		Material material = (Material) adapter.getItem(position);
-		FragmentTransaction transaction = fm.beginTransaction();
-		MaterialDetailFragment mdf = new MaterialDetailFragment();
-		Bundle args = new Bundle();
-		args.putString("material_id", material.getMaterial_id());
-		mdf.setArguments(args);
-		transaction.replace(R.id.content, mdf);
-		transaction.addToBackStack(null);
-		transaction.commit();
+		Intent intent = new Intent(getActivity(),MaterialDetailActivity.class);
+		intent.putExtra("material_id", material.getMaterial_id());
+		startActivity(intent);
 	}
 	
 	private Handler handler = new Handler(){

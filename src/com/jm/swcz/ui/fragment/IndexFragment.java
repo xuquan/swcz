@@ -19,6 +19,8 @@ import android.widget.SimpleAdapter;
 import com.jm.swcz.R;
 import com.jm.swcz.ui.activity.DeptActivity;
 import com.jm.swcz.ui.activity.MaterialTypeActivity;
+import com.jm.swcz.ui.activity.MemoActivity;
+import com.jm.swcz.ui.activity.StorageActivity;
 
 public class IndexFragment extends Fragment {
 	
@@ -57,6 +59,11 @@ public class IndexFragment extends Fragment {
 				case R.layout.material_type_activity:
 					intent = new Intent(getActivity(),MaterialTypeActivity.class);
 					break;
+				case R.layout.storage_activity:
+					intent = new Intent(getActivity(),StorageActivity.class);
+					break;
+				case R.layout.memo_activity:
+					intent = new Intent(getActivity(),MemoActivity.class);
 				default:
 					break;
 				}
@@ -81,23 +88,19 @@ public class IndexFragment extends Fragment {
 	private Integer[] layouts = {
 		R.layout.dept_activity,
 		R.layout.material_type_activity,
-		R.layout.material_detail_fragment,
-		R.id.rb_material,
-		R.id.rb_more,
-		R.id.rg_tab
+		R.layout.storage_activity,
+		R.layout.memo_activity
 	};
 	
 	private Integer[] icons = {
 			R.drawable.wdgf_150_icon,
 			R.drawable.wdgp_150_icon,
-			R.drawable.hqzx_150_icon,
 			R.drawable.jrcs_150_icon,
-			R.drawable.jyzx_150_icon,
-			R.drawable.zxzx_150_icon
+			R.drawable.yjfk_150_icon
 	};
 	
 	private String[] names = {
-			"部门","物料类别","决策","拆装","设置","备忘"
+			"部门","物料类别","库位","备忘录"
 	};
 	
 }

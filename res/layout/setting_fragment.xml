@@ -4,12 +4,33 @@
     android:layout_height="match_parent"
     android:background="@drawable/index_bg">
 
-    <TextView
-        android:id="@+id/txt_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text=""
-        android:textSize="20sp" />
+    <Button
+        android:id="@+id/btn_modify_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="24dp"
+        android:text="修改密码" />
+
+    <Button
+        android:id="@+id/btn_fault"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/btn_modify_password"
+        android:layout_marginTop="5dp"
+        android:text="故障现象" />
+    
+    <Button
+        android:id="@+id/btn_fault_reason"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/btn_fault"
+        android:layout_marginTop="5dp"
+        android:text="故障原因" />
 </RelativeLayout>

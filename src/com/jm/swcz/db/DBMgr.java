@@ -58,6 +58,7 @@ public class DBMgr {
 				totalRecords = Integer.parseInt(columnValue);
 			}
 		}
+		cursor.close();
 		return totalRecords;
 	}
 	
@@ -75,6 +76,7 @@ public class DBMgr {
 				map.put(columnName, columnValue);
 			}
 		}
+		cursor.close();
 		return map;
 	}
 	
@@ -94,6 +96,7 @@ public class DBMgr {
 			}
 			list.add(map);
 		}
+		cursor.close();
 		return list;
 	}
 	
@@ -135,6 +138,7 @@ public class DBMgr {
 				e.printStackTrace();
 			}
 		}
+		cursor.close();
 		return t;
 	}
 	
@@ -164,6 +168,7 @@ public class DBMgr {
 				e.printStackTrace();
 			}
 		}
+		cursor.close();
 		return list;
 	}
 	

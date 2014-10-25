@@ -80,7 +80,7 @@ public class MaterialService {
 			material.setMaterialType(mt);
 			User user = userDao.findUserById(material.getUser_id());
 			material.setUser(user);
-			Storage storage = storageDao.findStorage(material.getStorage_id());
+			Storage storage = storageDao.findStorageById(material.getStorage_id());
 			material.setStorage(storage);
 			Dept dept = deptDao.findDeptById(material.getDept_id());
 			material.setDept(dept);

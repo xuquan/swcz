@@ -34,7 +34,6 @@ public class LoginActivity extends Activity implements OnClickListener{
 	
 	private Button btn_login;//登录按钮
 	private TextView tv_new_user; // 新用户
-	private TextView tv_find_password; // 找回密码
 	private EditText et_username; // 用户名
 	private EditText et_password; // 密码
 	
@@ -71,8 +70,6 @@ public class LoginActivity extends Activity implements OnClickListener{
 		btn_login.setOnClickListener(this);
 		tv_new_user = (TextView) findViewById(R.id.tv_new_user);
 		tv_new_user.setOnClickListener(this);
-		tv_find_password = (TextView) findViewById(R.id.tv_find_password);
-		tv_find_password.setOnClickListener(this);
 	}
 	
 	private void restoreUsernameAndPassword() {
@@ -119,16 +116,11 @@ public class LoginActivity extends Activity implements OnClickListener{
 			final Intent registerIntent = new Intent(LoginActivity.this,RegisterActivity.class);
 			startActivity(registerIntent);
 			break;
-		case R.id.tv_find_password:
-			
-			break;
 		}
 	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {//创建系统功能菜单
-		//menu.add(0, MENU_PWD_BACK, 1, "密码找回").setIcon(R.drawable.menu_findkey);
-		//menu.add(0,MENU_HELP,2,"帮助").setIcon(R.drawable.menu_setting);
 		menu.add(0, MENU_EXIT, 3, "退出").setIcon(R.drawable.menu_exit);
 		return super.onCreateOptionsMenu(menu);
 	}

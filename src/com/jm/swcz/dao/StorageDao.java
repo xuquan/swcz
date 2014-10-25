@@ -1,5 +1,9 @@
 package com.jm.swcz.dao;
 
+import java.util.List;
+
+import android.text.TextUtils;
+
 import com.jm.swcz.db.DBMgr;
 import com.jm.swcz.factory.BeanFactory;
 import com.jm.swcz.model.Storage;
@@ -35,10 +39,19 @@ public class StorageDao {
 		return dbMgr.updateBySQL(sql, bindArgs);
 	}
 	
-	public Storage findStorage(String storage_id){
+	public Storage findStorageById(String storage_id){
 		String sql = "select * from t_storage where storage_id=?";
-		String[] selectionArgs = new String[]{storage_id};
+		String[] selectionArgs = new String[]{};
+		if(!TextUtils.isEmpty(storage_id)){
+			selectionArgs = new String[]{storage_id};
+		}
 		Storage storage = dbMgr.querySingleCursor(sql, selectionArgs, Storage.class);
 		return storage;
+	}
+
+	public List<Storage> findStorageList() {
+		String sql = "select * from t_storage";
+		List<Storage> list = dbMgr.queryMultiCursor(sql, null, Storage.class);
+		return list;
 	}
 }

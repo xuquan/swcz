@@ -41,4 +41,8 @@ public class UserService {
 	public User findUser(String username){
 		return userDao.findUser(username);
 	}
+	
+	public boolean modifyPassword(String userId,String password){
+		return userDao.modifyPassword(userId, password);
+	}
 }

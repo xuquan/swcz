@@ -68,6 +68,24 @@ public class DBHelper extends SQLiteOpenHelper {
 				"manufacturer_code varchar2,manufacturer_name varchar2," +
 				"dept_id varchar2,duty_person varchar2,remark varchar2,user_id varchar2,operate_time varchar2)";
 		db.execSQL(materialCreateSql);
+		
+		// 备忘录表
+		String memoCreatSql = "create table t_memo (memo_id varchar2 primary key,content varchar2," +
+				"user_id varchar2,operate_time varchar2)";
+		db.execSQL(memoCreatSql);
+		
+		// 故障现象表
+		String faultCreatSql = "create table t_fault (fault_id varchar2 primary key,fault_name varchar2)";
+		db.execSQL(faultCreatSql);
+		
+		// 故障原因表
+		String faultReasonCreatSql = "create table t_fault_reason (reason_id varchar2 primary key,reason_name varchar2)";
+		db.execSQL(faultReasonCreatSql);	
+		
+		// 决策表
+		String decisionCreatSql = "create table t_decision (decision_id varchar2 primary key,fault_id varchar2," +
+				"level varchar2,reason_id varchar2,proportion varchar2)";
+		db.execSQL(decisionCreatSql);
 	}
 
 	@Override

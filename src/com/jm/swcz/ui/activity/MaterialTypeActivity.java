@@ -31,6 +31,7 @@ public class MaterialTypeActivity extends ListActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.material_type_activity);
 		this.setTitle("物料类别");
 		materialTypeService = (MaterialTypeService) BeanFactory.getInstance().getBean(MaterialTypeService.class);
 		loadData();
@@ -51,7 +52,7 @@ public class MaterialTypeActivity extends ListActivity {
 		
 		String[] from = new String[]{"tv_material_type_name"};
 		int[] to = new int[]{R.id.tv_material_type_name};
-		adapter = new SimpleAdapter(this, data, R.layout.material_type_activity, from, to);
+		adapter = new SimpleAdapter(this, data, R.layout.material_type_item_activity, from, to);
 		setListAdapter(adapter);
 	}
 	
