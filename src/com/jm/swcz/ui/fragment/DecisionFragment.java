@@ -41,8 +41,9 @@ public class DecisionFragment extends ListFragment {
 	private DecisionService decisionService;
 	private FaultService faultService;
 	private ArrayAdapter<Fault> faultAdapter;
+	private ArrayAdapter<Fault> fault2Adapter;
 	private ArrayAdapter<String> levelAdapter;
-	private Spinner sp_fault,sp_fault_level;
+	private Spinner sp_fault,sp_fault2,sp_fault_level;
 	private Button btn_search_decision;
 	private String query_fault_id1;
 	private String query_fault_id2;
@@ -66,6 +67,8 @@ public class DecisionFragment extends ListFragment {
 		Collections.reverse(faultList);
 		faultAdapter = new ArrayAdapter<Fault>(getActivity(),android.R.layout.simple_spinner_item,faultList);
 		faultAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		fault2Adapter = new ArrayAdapter<Fault>(getActivity(),android.R.layout.simple_spinner_item,faultList);
+		fault2Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		
 		List<String> levelList = new ArrayList<String>();
 		levelList.add("请选择");
@@ -132,6 +135,10 @@ public class DecisionFragment extends ListFragment {
 		sp_fault.setAdapter(faultAdapter);
 		sp_fault.setOnItemSelectedListener(new FaultSelectedListener());
 		sp_fault.setVisibility(View.VISIBLE);
+		sp_fault2 = (Spinner) view.findViewById(R.id.sp_fault2);
+		sp_fault2.setAdapter(fault2Adapter);
+		sp_fault2.setOnItemSelectedListener(new Fault2SelectedListener());
+		sp_fault2.setVisibility(View.VISIBLE);
 		
 		sp_fault_level = (Spinner) view.findViewById(R.id.sp_fault_level);
 		sp_fault_level.setAdapter(levelAdapter);
@@ -176,6 +183,22 @@ public class DecisionFragment extends ListFragment {
 		@Override
 		public void onNothingSelected(AdapterView<?> parent) {
 			query_fault_id1 = "";
+		}
+		
+	}
+	
+	class Fault2SelectedListener implements OnItemSelectedListener{
+
+		@Override
+		public void onItemSelected(AdapterView<?> parent, View view, int position,
+				long id) {
+			Fault fault = faultAdapter.getItem(position);
+			query_fault_id2 = fault.getFault_id();
+		}
+
+		@Override
+		public void onNothingSelected(AdapterView<?> parent) {
+			query_fault_id2 = "";
 		}
 		
 	}

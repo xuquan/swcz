@@ -73,10 +73,13 @@ public class DecisionService {
 	private void loadData(Decision decision){
 		if(decision!=null){
 			String faultId = decision.getFault_id();
+			String faultId2 = decision.getFault_id2();
 			String reasonId = decision.getReason_id();
 			Fault fault = faultDao.findFaultById(faultId);
+			Fault fault2 = faultDao.findFaultById(faultId2);
 			FaultReason reason = faultReasonDao.findFaultReasonById(reasonId);
 			decision.setFault(fault);
+			decision.setFault2(fault2);
 			decision.setReason(reason);
 		}
 	}

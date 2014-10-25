@@ -83,7 +83,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		db.execSQL(faultReasonCreatSql);	
 		
 		// 决策表
-		String decisionCreatSql = "create table t_decision (decision_id varchar2 primary key,fault_id varchar2," +
+		String decisionCreatSql = "create table t_decision (decision_id varchar2 primary key,fault_id varchar2,fault_id2 varchar2," +
 				"level varchar2,reason_id varchar2,proportion varchar2)";
 		db.execSQL(decisionCreatSql);
 	}

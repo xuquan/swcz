@@ -1,10 +1,10 @@
 package com.jm.swcz.ui.activity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import android.app.Activity;
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -41,9 +41,10 @@ public class DecisionDetailActivity extends Activity implements OnClickListener 
 	private List<Fault> faultList;
 	private List<FaultReason> faultReasonList;
 	private ArrayAdapter<Fault> faultAdapter;
+	private ArrayAdapter<Fault> fault2Adapter;
 	private ArrayAdapter<FaultReason> faultReasonAdapter;
 	private ArrayAdapter<String> levelAdapter;
-	private Spinner sp_fault,sp_fault_level,sp_fault_reason;
+	private Spinner sp_fault,sp_fault2,sp_fault_level,sp_fault_reason;
 	private EditText et_proportion;
 	private Button btn_save_decision;
 	
@@ -62,14 +63,22 @@ public class DecisionDetailActivity extends Activity implements OnClickListener 
 			decision = new Decision();
 		}
 		faultList = faultService.findFaultList();
+		Fault fault = new Fault();
+		fault.setFault_id("");
+		fault.setFault_name("请选择");
+		faultList.add(fault);
+		Collections.reverse(faultList);
 		faultAdapter = new ArrayAdapter<Fault>(this,android.R.layout.simple_spinner_item,faultList);
 		faultAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		fault2Adapter = new ArrayAdapter<Fault>(this,android.R.layout.simple_spinner_item,faultList);
+		fault2Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		
 		faultReasonList = faultReasonService.findFaultReasonList();
 		faultReasonAdapter = new ArrayAdapter<FaultReason>(this,android.R.layout.simple_spinner_item,faultReasonList);
 		faultReasonAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		
 		List<String> levelList = new ArrayList<String>();
+		levelList.add("请选择");
 		levelList.add("Low");
 		levelList.add("High");
 		levelAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,levelList);
@@ -83,6 +92,10 @@ public class DecisionDetailActivity extends Activity implements OnClickListener 
 		sp_fault.setAdapter(faultAdapter);
 		sp_fault.setOnItemSelectedListener(new FaultSelectedListener());
 		sp_fault.setVisibility(View.VISIBLE);
+		sp_fault2 = (Spinner) findViewById(R.id.sp_fault2);
+		sp_fault2.setAdapter(fault2Adapter);
+		sp_fault2.setOnItemSelectedListener(new Fault2SelectedListener());
+		sp_fault2.setVisibility(View.VISIBLE);
 		
 		sp_fault_level = (Spinner) findViewById(R.id.sp_fault_level);
 		sp_fault_level.setAdapter(levelAdapter);
@@ -99,6 +112,7 @@ public class DecisionDetailActivity extends Activity implements OnClickListener 
 		btn_save_decision.setOnClickListener(this);
 		if(decision!=null){
 			sp_fault.setSelection(faultAdapter.getPosition(decision.getFault()));
+			sp_fault2.setSelection(fault2Adapter.getPosition(decision.getFault2()));
 			sp_fault_level.setSelection(levelAdapter.getPosition(decision.getLevel()));
 			sp_fault_reason.setSelection(faultReasonAdapter.getPosition(decision.getReason()));
 			et_proportion.setText(decision.getProportion());
@@ -147,6 +161,24 @@ public class DecisionDetailActivity extends Activity implements OnClickListener 
 			Fault fault = faultAdapter.getItem(position);
 			if(decision!=null && fault!=null){
 				decision.setFault_id(fault.getFault_id());
+			}
+		}
+
+		@Override
+		public void onNothingSelected(AdapterView<?> parent) {
+			
+		}
+		
+	}
+	
+	class Fault2SelectedListener implements OnItemSelectedListener{
+
+		@Override
+		public void onItemSelected(AdapterView<?> parent, View view, int position,
+				long id) {
+			Fault fault = fault2Adapter.getItem(position);
+			if(decision!=null && fault!=null){
+				decision.setFault_id2(fault.getFault_id());
 			}
 		}
 

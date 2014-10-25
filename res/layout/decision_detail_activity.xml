@@ -19,15 +19,35 @@
 			        android:id="@+id/tv_fault_name"
 			        android:layout_width="0dp"
 			        android:layout_height="40dp"
-			        android:layout_weight="1"
+			        android:layout_weight="2"
 			        android:gravity="right|center_vertical"
-			        android:text="故障现象:"
+			        android:text="故障现象1:"
 			        android:textSize="14sp" />
 			    <Spinner
 			        android:id="@+id/sp_fault"
 			        android:layout_width="0dp"
 			        android:layout_height="40dp"
-			        android:layout_weight="4" 
+			        android:layout_weight="5" 
+			        android:textColor="#FFFFFF"
+			        android:textSize="12sp"/>
+			</TableRow>
+			
+            <TableRow
+		        android:layout_width="fill_parent"
+		        android:layout_height="40dp">
+                <TextView
+			        android:id="@+id/tv_fault_name2"
+			        android:layout_width="0dp"
+			        android:layout_height="40dp"
+			        android:layout_weight="2"
+			        android:gravity="right|center_vertical"
+			        android:text="故障现象2:"
+			        android:textSize="14sp" />
+			    <Spinner
+			        android:id="@+id/sp_fault2"
+			        android:layout_width="0dp"
+			        android:layout_height="40dp"
+			        android:layout_weight="5" 
 			        android:textColor="#FFFFFF"
 			        android:textSize="12sp"/>
 			</TableRow>
@@ -39,7 +59,7 @@
 			        android:id="@+id/tv_fault_level"
 			        android:layout_width="0dp"
 			        android:layout_height="40dp"
-			        android:layout_weight="1"
+			        android:layout_weight="2"
 			        android:gravity="right|center_vertical"
 			        android:text="故障级别:"
 			        android:textSize="14sp" />
@@ -47,7 +67,7 @@
 			        android:id="@+id/sp_fault_level"
 			        android:layout_width="0dp"
 			        android:layout_height="40dp"
-			        android:layout_weight="4" 
+			        android:layout_weight="5" 
 			        android:textColor="#FFFFFF"
 			        android:textSize="12sp"/>
 		    </TableRow>
@@ -59,7 +79,7 @@
 				        android:id="@+id/tv_fault_reason"
 				        android:layout_width="0dp"
 				        android:layout_height="40dp"
-				        android:layout_weight="1"
+				        android:layout_weight="2"
 				        android:gravity="right|center_vertical"
 				        android:text="故障原因:"
 				        android:textSize="14sp" />
@@ -67,7 +87,7 @@
 			        android:id="@+id/sp_fault_reason"
 			        android:layout_width="0dp"
 			        android:layout_height="40dp"
-			        android:layout_weight="4" 
+			        android:layout_weight="5" 
 			        android:textColor="#FFFFFF"
 			        android:textSize="12sp"/>   
 	        </TableRow>
@@ -78,7 +98,7 @@
 			        android:id="@+id/tv_proportion"
 			        android:layout_width="0dp"
 			        android:layout_height="40dp"
-			        android:layout_weight="1"
+			        android:layout_weight="2"
 			        android:gravity="right|center_vertical"
 			        android:text="占比:"
 			        android:textSize="14sp" />
@@ -86,7 +106,7 @@
 			        android:id="@+id/et_proportion"
 			        android:layout_width="0dp"
 			        android:layout_height="40dp"
-			        android:layout_weight="4"
+			        android:layout_weight="5"
 			        android:textColor="#FFFFFF"
 			        android:textSize="12sp" />
 			 </TableRow>

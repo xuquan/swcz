@@ -18,15 +18,15 @@ public class DecisionDao{
 	private DBMgr dbMgr = (DBMgr) BeanFactory.getInstance().getBean(DBMgr.class);
 
 	public boolean saveDecision(Decision decision){
-		String sql = "insert into t_decision (decision_id,fault_id,level,reason_id,proportion) values (?,?,?,?,?)";
-		Object[] bindArgs = new Object[]{decision.getDecision_id(),decision.getFault_id(),decision.getLevel(),
+		String sql = "insert into t_decision (decision_id,fault_id,fault_id2,level,reason_id,proportion) values (?,?,?,?,?,?)";
+		Object[] bindArgs = new Object[]{decision.getDecision_id(),decision.getFault_id(),decision.getFault_id2(),decision.getLevel(),
 				decision.getReason_id(),decision.getProportion()};
 		return dbMgr.updateBySQL(sql, bindArgs);
 	}
 	
 	public boolean updateDecision(Decision decision){
-		String sql = "update t_decision set fault_id=?,level=?,reason_id=?,proportion=? where decision_id=?";
-		Object[] bindArgs = new Object[]{decision.getFault_id(),decision.getLevel(),
+		String sql = "update t_decision set fault_id=?,fault_id2=?,level=?,reason_id=?,proportion=? where decision_id=?";
+		Object[] bindArgs = new Object[]{decision.getFault_id(),decision.getFault_id2(),decision.getLevel(),
 				decision.getReason_id(),decision.getProportion(),decision.getDecision_id()};
 		return dbMgr.updateBySQL(sql, bindArgs);
 	}
@@ -62,7 +62,7 @@ public class DecisionDao{
 			sbSql.append(" and t1.fault_id='").append(fault_id1).append("'");
 		}
 		if(!TextUtils.isEmpty(fault_id2)){
-			sbSql.append(" and t1.fault_id='").append(fault_id2).append("'");
+			sbSql.append(" and t1.fault_id2='").append(fault_id2).append("'");
 		}
 		if(!TextUtils.isEmpty(level)){
 			sbSql.append(" and t1.level='").append(level).append("'");
