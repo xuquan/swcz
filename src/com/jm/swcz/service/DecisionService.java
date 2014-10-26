@@ -60,8 +60,8 @@ public class DecisionService {
 		return list;
 	}
 	
-	public List<Decision> findDecisionList(String fault_id1,String fault_id2,String level){
-		List<Decision> list = decisionDao.findDecisionList(fault_id1,fault_id2,level);
+	public List<Decision> findDecisionList(String fault_id1,String fault_id2,String level,String level2){
+		List<Decision> list = decisionDao.findDecisionList(fault_id1,fault_id2,level,level2);
 		if(list!=null && list.size()>0){
 			for(Decision decision : list){
 				loadData(decision);

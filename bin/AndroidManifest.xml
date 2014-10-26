@@ -41,6 +41,8 @@
         <activity android:name="com.jm.swcz.ui.activity.FaultReasonActivity"></activity>
         <activity android:name="com.jm.swcz.ui.activity.FaultReasonDetailActivity"></activity>
         <activity android:name="com.jm.swcz.ui.activity.DecisionDetailActivity"></activity>
+        <activity android:name="com.jm.swcz.ui.activity.DismountingVideoActivity"></activity>
+        <activity android:name="com.jm.swcz.ui.activity.ManualActivity"></activity>
     </application>
 
 </manifest>

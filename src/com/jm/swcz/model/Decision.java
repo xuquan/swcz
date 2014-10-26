@@ -12,6 +12,7 @@ public class Decision {
 	private Fault fault;
 	private Fault fault2;
 	private String level;
+	private String level2;
 	private String reason_id;
 	private FaultReason reason;
 	private String proportion;
@@ -69,5 +70,11 @@ public class Decision {
 	}
 	public void setFault2(Fault fault2) {
 		this.fault2 = fault2;
+	}
+	public String getLevel2() {
+		return level2;
+	}
+	public void setLevel2(String level2) {
+		this.level2 = level2;
 	}
 }

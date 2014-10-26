@@ -43,11 +43,13 @@ public class DecisionFragment extends ListFragment {
 	private ArrayAdapter<Fault> faultAdapter;
 	private ArrayAdapter<Fault> fault2Adapter;
 	private ArrayAdapter<String> levelAdapter;
-	private Spinner sp_fault,sp_fault2,sp_fault_level;
+	private ArrayAdapter<String> level2Adapter;
+	private Spinner sp_fault,sp_fault2,sp_fault_level,sp_fault_level2;
 	private Button btn_search_decision;
 	private String query_fault_id1;
 	private String query_fault_id2;
 	private String query_level;
+	private String query_level2;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -76,6 +78,8 @@ public class DecisionFragment extends ListFragment {
 		levelList.add("High");
 		levelAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,levelList);
 		levelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		level2Adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,levelList);
+		level2Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		
 		loadData(decisionList);
 	}
@@ -92,7 +96,7 @@ public class DecisionFragment extends ListFragment {
 					map.put("tv_decision_fault_name", fault.getFault_name());
 				}
 				map.put("tv_level", decision.getLevel());
-				map.put("tv_proportion", decision.getProportion());
+				map.put("tv_proportion", decision.getProportion()+"%");
 				data.add(map);
 			}
 		}
@@ -105,8 +109,7 @@ public class DecisionFragment extends ListFragment {
 	
 	@Override
 	public void onResume() {
-		decisionList = decisionService.findDecisionList();
-		loadData(decisionList);
+		search(query_fault_id1,query_fault_id2,query_level,query_level2);
 		super.onResume();
 	}
 	
@@ -144,21 +147,25 @@ public class DecisionFragment extends ListFragment {
 		sp_fault_level.setAdapter(levelAdapter);
 		sp_fault_level.setOnItemSelectedListener(new LevelSelectedListener());
 		sp_fault_level.setVisibility(View.VISIBLE);
+		sp_fault_level2 = (Spinner) view.findViewById(R.id.sp_fault_level2);
+		sp_fault_level2.setAdapter(level2Adapter);
+		sp_fault_level2.setOnItemSelectedListener(new Level2SelectedListener());
+		sp_fault_level2.setVisibility(View.VISIBLE);
 		
 		btn_search_decision = (Button) view.findViewById(R.id.btn_search_decision);
 		btn_search_decision.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				search(query_fault_id1,query_fault_id2,query_level);
+				search(query_fault_id1,query_fault_id2,query_level,query_level2);
 			}
 		});
 		
 		return view;
 	}
 	
-	private void search(String query_fault_id1,String query_fault_id2,String query_level){
-		List<Decision> decisionList = decisionService.findDecisionList(query_fault_id1, query_fault_id2, query_level);
+	private void search(String query_fault_id1,String query_fault_id2,String query_level,String query_level2){
+		List<Decision> decisionList = decisionService.findDecisionList(query_fault_id1, query_fault_id2, query_level,query_level2);
 		loadData(decisionList);
 	}
 	
@@ -219,6 +226,26 @@ public class DecisionFragment extends ListFragment {
 		@Override
 		public void onNothingSelected(AdapterView<?> parent) {
 			query_level = "";
+		}
+		
+	}
+	
+	class Level2SelectedListener implements OnItemSelectedListener{
+
+		@Override
+		public void onItemSelected(AdapterView<?> parent, View view, int position,
+				long id) {
+			String level = level2Adapter.getItem(position);
+			if("请选择".equals(level)){
+				query_level2 = "";
+			}else{
+				query_level2 = level;
+			}
+		}
+
+		@Override
+		public void onNothingSelected(AdapterView<?> parent) {
+			query_level2 = "";
 		}
 		
 	}

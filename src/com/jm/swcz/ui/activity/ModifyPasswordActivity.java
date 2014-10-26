@@ -70,7 +70,7 @@ public class ModifyPasswordActivity extends Activity implements OnClickListener 
 			
 			boolean flag = userService.modifyPassword(userId, newPassword);
 			if(flag){
-				Toast.makeText(this, "修改密码成功", Toast.LENGTH_SHORT);
+				Toast.makeText(this, "修改密码成功", Toast.LENGTH_SHORT).show();
 				try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
@@ -78,7 +78,7 @@ public class ModifyPasswordActivity extends Activity implements OnClickListener 
 				}
 				finish();
 			}else{
-				Toast.makeText(this, "修改密码失败", Toast.LENGTH_SHORT);
+				Toast.makeText(this, "修改密码失败", Toast.LENGTH_SHORT).show();
 			}
 		}
 	}

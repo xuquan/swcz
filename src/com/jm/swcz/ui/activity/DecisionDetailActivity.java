@@ -44,7 +44,8 @@ public class DecisionDetailActivity extends Activity implements OnClickListener 
 	private ArrayAdapter<Fault> fault2Adapter;
 	private ArrayAdapter<FaultReason> faultReasonAdapter;
 	private ArrayAdapter<String> levelAdapter;
-	private Spinner sp_fault,sp_fault2,sp_fault_level,sp_fault_reason;
+	private ArrayAdapter<String> level2Adapter;
+	private Spinner sp_fault,sp_fault2,sp_fault_level,sp_fault_level2,sp_fault_reason;
 	private EditText et_proportion;
 	private Button btn_save_decision;
 	
@@ -83,6 +84,8 @@ public class DecisionDetailActivity extends Activity implements OnClickListener 
 		levelList.add("High");
 		levelAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,levelList);
 		levelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		level2Adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,levelList);
+		level2Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		
 		initView();
 	}
@@ -101,6 +104,10 @@ public class DecisionDetailActivity extends Activity implements OnClickListener 
 		sp_fault_level.setAdapter(levelAdapter);
 		sp_fault_level.setOnItemSelectedListener(new LevelSelectedListener());
 		sp_fault_level.setVisibility(View.VISIBLE);
+		sp_fault_level2 = (Spinner) findViewById(R.id.sp_fault_level2);
+		sp_fault_level2.setAdapter(level2Adapter);
+		sp_fault_level2.setOnItemSelectedListener(new Level2SelectedListener());
+		sp_fault_level2.setVisibility(View.VISIBLE);
 		
 		sp_fault_reason = (Spinner) findViewById(R.id.sp_fault_reason);
 		sp_fault_reason.setAdapter(faultReasonAdapter);
@@ -114,6 +121,7 @@ public class DecisionDetailActivity extends Activity implements OnClickListener 
 			sp_fault.setSelection(faultAdapter.getPosition(decision.getFault()));
 			sp_fault2.setSelection(fault2Adapter.getPosition(decision.getFault2()));
 			sp_fault_level.setSelection(levelAdapter.getPosition(decision.getLevel()));
+			sp_fault_level2.setSelection(level2Adapter.getPosition(decision.getLevel2()));
 			sp_fault_reason.setSelection(faultReasonAdapter.getPosition(decision.getReason()));
 			et_proportion.setText(decision.getProportion());
 		}
@@ -215,6 +223,24 @@ public class DecisionDetailActivity extends Activity implements OnClickListener 
 			String level = levelAdapter.getItem(position);
 			if(decision!=null && !TextUtils.isEmpty(level)){
 				decision.setLevel(level);
+			}
+		}
+
+		@Override
+		public void onNothingSelected(AdapterView<?> parent) {
+			
+		}
+		
+	}
+	
+	class Level2SelectedListener implements OnItemSelectedListener{
+
+		@Override
+		public void onItemSelected(AdapterView<?> parent, View view, int position,
+				long id) {
+			String level = level2Adapter.getItem(position);
+			if(decision!=null && !TextUtils.isEmpty(level)){
+				decision.setLevel2(level);
 			}
 		}
 

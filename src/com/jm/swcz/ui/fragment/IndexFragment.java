@@ -1,5 +1,6 @@
 package com.jm.swcz.ui.fragment;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,7 +8,9 @@ import java.util.Map;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +67,16 @@ public class IndexFragment extends Fragment {
 					break;
 				case R.layout.memo_activity:
 					intent = new Intent(getActivity(),MemoActivity.class);
+					break;
+				case R.layout.manual_activity:
+					//intent = new Intent(getActivity(),ManualActivity.class);
+					intent = new Intent(Intent.ACTION_VIEW);
+					intent.addCategory(Intent.CATEGORY_DEFAULT);
+					intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					String path =Environment.getExternalStorageDirectory().getPath() + "/s60mc.pdf";
+			        Uri uri = Uri.fromFile(new File(path));
+			        intent.setDataAndType(uri, "application/pdf");
+					break;
 				default:
 					break;
 				}
@@ -89,18 +102,20 @@ public class IndexFragment extends Fragment {
 		R.layout.dept_activity,
 		R.layout.material_type_activity,
 		R.layout.storage_activity,
-		R.layout.memo_activity
+		R.layout.memo_activity,
+		R.layout.manual_activity
 	};
 	
 	private Integer[] icons = {
 			R.drawable.wdgf_150_icon,
 			R.drawable.wdgp_150_icon,
 			R.drawable.jrcs_150_icon,
-			R.drawable.yjfk_150_icon
+			R.drawable.yjfk_150_icon,
+			R.drawable.kfrx_150_icon
 	};
 	
 	private String[] names = {
-			"部门","物料类别","库位","备忘录"
+			"部门","物料类别","库位","备忘录","说明书"
 	};
 	
 }
