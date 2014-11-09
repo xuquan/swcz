@@ -36,7 +36,7 @@ import com.jm.swcz.ui.activity.DecisionDetailActivity;
 public class DecisionFragment extends ListFragment {
 	
 	private SimpleAdapter adapter;
-	private List<Decision> decisionList;
+	//private List<Decision> decisionList;
 	private List<Fault> faultList;
 	private DecisionService decisionService;
 	private FaultService faultService;
@@ -56,7 +56,7 @@ public class DecisionFragment extends ListFragment {
 		super.onCreate(savedInstanceState);
 		decisionService = (DecisionService) BeanFactory.getInstance().getBean(DecisionService.class);
 		faultService = (FaultService) BeanFactory.getInstance().getBean(FaultService.class);
-		decisionList = decisionService.findDecisionList();
+		//decisionList = decisionService.findDecisionList();
 		Activity activity = getActivity();
 		activity.setTitle("决策");
 		setHasOptionsMenu(true);
@@ -81,7 +81,7 @@ public class DecisionFragment extends ListFragment {
 		level2Adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,levelList);
 		level2Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		
-		loadData(decisionList);
+		//loadData(decisionList);
 	}
 	
 	private void loadData(List<Decision> decisionList){
@@ -93,7 +93,7 @@ public class DecisionFragment extends ListFragment {
 				map.put("tv_decision_id", decision.getDecision_id());
 				Fault fault = decision.getFault();
 				if(fault!=null){
-					map.put("tv_decision_fault_name", fault.getFault_name());
+					map.put("tv_decision_fault_reason", decision.getReason().getReason_name());
 				}
 				map.put("tv_level", decision.getLevel());
 				map.put("tv_proportion", decision.getProportion()+"%");
@@ -101,15 +101,15 @@ public class DecisionFragment extends ListFragment {
 			}
 		}
 		
-		String[] from = new String[]{"tv_decision_fault_name","tv_level","tv_proportion"};
-		int[] to = new int[]{R.id.tv_decision_fault_name,R.id.tv_level,R.id.tv_proportion};
+		String[] from = new String[]{"tv_decision_fault_reason","tv_level","tv_proportion"};
+		int[] to = new int[]{R.id.tv_decision_fault_reason,R.id.tv_level,R.id.tv_proportion};
 		adapter = new SimpleAdapter(getActivity(), data, R.layout.decision_item_activity, from, to);
 		setListAdapter(adapter);
 	}
 	
 	@Override
 	public void onResume() {
-		search(query_fault_id1,query_fault_id2,query_level,query_level2);
+		//search(query_fault_id1,query_fault_id2,query_level,query_level2);
 		super.onResume();
 	}
 	

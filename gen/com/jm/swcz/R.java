@@ -204,7 +204,7 @@ public final class R {
         public static final int tl_storage_detail_1=0x7f06008c;
         public static final int tv_amount=0x7f060055;
         public static final int tv_content=0x7f060072;
-        public static final int tv_decision_fault_name=0x7f060012;
+        public static final int tv_decision_fault_reason=0x7f060012;
         public static final int tv_dept_contactor=0x7f060018;
         public static final int tv_dept_id=0x7f06005d;
         public static final int tv_dept_name=0x7f060016;

@@ -34,7 +34,7 @@ public class DismountingVideoActivity extends Activity {
 		//String path = this.getActivity().getDatabasePath("1.mp4").getAbsolutePath();
 		Intent intent = getIntent();
 		String fileName = intent.getStringExtra("fileName");
-		String path =Environment.getExternalStorageDirectory().getPath() + "/" + fileName;
+		String path =Environment.getExternalStorageDirectory().getPath() + "/swcz/" + fileName;
 		File file = new File(path);
 		if(!file.exists()){
 			Toast.makeText(this, "文件["+fileName+"]不存在", Toast.LENGTH_LONG).show();

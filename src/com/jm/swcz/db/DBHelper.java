@@ -1,9 +1,18 @@
 package com.jm.swcz.db;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.jm.swcz.AppContext;
+
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.TextUtils;
 
 /**
  * 数据库帮助类
@@ -16,21 +25,27 @@ public class DBHelper extends SQLiteOpenHelper {
 	
 	private final static int VERSION = 1; // 数据库版本
 	
+	private Context context;
+	
 	public DBHelper(Context context, String name, CursorFactory factory,
 			int version) {
 		super(context, name, factory, version);
+		this.context = context;
 	}
 	
 	public DBHelper(Context context, String name,int version) {
 		super(context, name, null, version);
+		this.context = context;
 	}
 	
 	public DBHelper(Context context, String name){
 		this(context,name,VERSION);
+		this.context = context;
 	}
 	
 	public DBHelper(Context context){
 		this(context,DB_NAME,VERSION);
+		this.context = context;
 	}
 
 	@Override
@@ -86,6 +101,8 @@ public class DBHelper extends SQLiteOpenHelper {
 		String decisionCreatSql = "create table t_decision (decision_id varchar2 primary key,fault_id varchar2,fault_id2 varchar2," +
 				"level varchar2,level2 varchar2,reason_id varchar2,proportion varchar2)";
 		db.execSQL(decisionCreatSql);
+		
+		initSql(db);
 	}
 
 	@Override
@@ -93,5 +110,32 @@ public class DBHelper extends SQLiteOpenHelper {
 		//String sql = "alter table t_user add mobile_phone integer";
 		//db.execSQL(sql);
 	}
+	
+	// 初始化数据
+	public void initSql(SQLiteDatabase db){
+		List<String> sqlList = getSqlFromAssets("sql.txt");
+		if(sqlList!=null && sqlList.size()>0){
+			for(String sql:sqlList){
+				if(!TextUtils.isEmpty(sql)){
+					db.execSQL(sql);
+				}
+			}
+		}
+	}
 
+	// 从assets文件夹获取sql.txt文件
+	private List<String> getSqlFromAssets(String fileName){
+		List<String> sqlList = new ArrayList<String>();
+		try {
+			InputStreamReader reader = new InputStreamReader(context.getAssets().open(fileName));
+			BufferedReader br = new BufferedReader(reader);
+			String line = "";
+			while((line=br.readLine())!=null){
+				sqlList.add(line);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return sqlList;
+	}
 }

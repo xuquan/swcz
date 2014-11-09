@@ -50,7 +50,7 @@ public class DismountingFragment extends Fragment implements OnClickListener{
 			intent.putExtra("fileName", "cpyq.mp4");
 			break;
 		case R.id.btn_azpyb:
-			intent.putExtra("fileName", "azpyb.mp4");
+			intent.putExtra("fileName", "apyb.mp4");
 			break;
 		}
 		startActivity(intent);

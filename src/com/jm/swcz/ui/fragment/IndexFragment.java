@@ -1,6 +1,7 @@
 package com.jm.swcz.ui.fragment;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -73,7 +74,7 @@ public class IndexFragment extends Fragment {
 					intent = new Intent(Intent.ACTION_VIEW);
 					intent.addCategory(Intent.CATEGORY_DEFAULT);
 					intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					String path =Environment.getExternalStorageDirectory().getPath() + "/s60mc.pdf";
+					String path =Environment.getExternalStorageDirectory().getPath() + "/swcz/s60mc.pdf";
 			        Uri uri = Uri.fromFile(new File(path));
 			        intent.setDataAndType(uri, "application/pdf");
 					break;

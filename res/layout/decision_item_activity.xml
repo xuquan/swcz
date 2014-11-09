@@ -14,7 +14,7 @@
         android:src="@drawable/icon_dept" />
 
 	<TextView
-	    android:id="@+id/tv_decision_fault_name"
+	    android:id="@+id/tv_decision_fault_reason"
 	    android:layout_width="wrap_content"
 	    android:layout_height="45dp"
 	    android:layout_alignTop="@+id/iv_decision"
@@ -23,7 +23,6 @@
 	    android:gravity="center_vertical"
 	    android:singleLine="true"
 	    android:ellipsize="end"
-	    android:width="130dp"
 	    android:textColor="#FFFFFFFF"
 	    android:textSize="16sp" />
 	
@@ -31,7 +30,7 @@
 	    android:id="@+id/tv_level"
 	    android:layout_width="wrap_content"
 	    android:layout_height="45dp"
-	    android:layout_toRightOf="@+id/tv_decision_fault_name"
+	    android:layout_toRightOf="@+id/tv_decision_fault_reason"
 	    android:gravity="center_vertical"
 	    android:textColor="#FFFFFFFF"
 	    android:textSize="16sp" />

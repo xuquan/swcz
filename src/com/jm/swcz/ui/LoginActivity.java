@@ -1,11 +1,18 @@
 package com.jm.swcz.ui;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -50,6 +57,48 @@ public class LoginActivity extends Activity implements OnClickListener{
 		setContentView(R.layout.login_activity);
 		initView();
 		restoreUsernameAndPassword();
+		copyAssetsToSDCard();
+	}
+	
+	private void copyAssetsToSDCard(){
+		try {
+			List<String> container = new ArrayList<String>();
+			container.add("s60mc.pdf");
+			container.add("apyb.mp4");
+			container.add("apyq.mp4");
+			container.add("cpyb.mp4");
+			container.add("cpyq.mp4");
+			String str[] = getAssets().list("");
+			if(str!=null && str.length>0){
+				for(String fileName : str){
+					if(container.contains(fileName)){
+						InputStream is = getAssets().open(fileName);
+						String path =Environment.getExternalStorageDirectory().getPath();
+						File pathFile = new File(path+"/swcz/");
+						if(!pathFile.exists()){
+							pathFile.mkdirs();
+						}
+						File file = new File(path+"/swcz/"+fileName);
+						if(!file.exists()){
+							file.createNewFile();
+						}
+						FileOutputStream fos = new FileOutputStream(file);
+						byte[] buffer = new byte[1024];
+						while(true){
+							int len = is.read(buffer);
+							if(len==-1){
+								break;
+							}
+							fos.write(buffer,0,len);
+						}
+						is.close();
+						fos.close();
+					}
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void initView(){
