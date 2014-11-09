@@ -27,15 +27,6 @@
 	    android:textSize="16sp" />
 	
 	<TextView
-	    android:id="@+id/tv_level"
-	    android:layout_width="wrap_content"
-	    android:layout_height="45dp"
-	    android:layout_toRightOf="@+id/tv_decision_fault_reason"
-	    android:gravity="center_vertical"
-	    android:textColor="#FFFFFFFF"
-	    android:textSize="16sp" />
-
-	<TextView
 	    android:id="@+id/tv_proportion"
 	    android:layout_width="wrap_content"
 	    android:layout_height="45dp"

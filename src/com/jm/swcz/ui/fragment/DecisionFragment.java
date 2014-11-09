@@ -101,8 +101,8 @@ public class DecisionFragment extends ListFragment {
 			}
 		}
 		
-		String[] from = new String[]{"tv_decision_fault_reason","tv_level","tv_proportion"};
-		int[] to = new int[]{R.id.tv_decision_fault_reason,R.id.tv_level,R.id.tv_proportion};
+		String[] from = new String[]{"tv_decision_fault_reason","tv_proportion"};
+		int[] to = new int[]{R.id.tv_decision_fault_reason,R.id.tv_proportion};
 		adapter = new SimpleAdapter(getActivity(), data, R.layout.decision_item_activity, from, to);
 		setListAdapter(adapter);
 	}
