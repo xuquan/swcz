@@ -71,6 +71,7 @@ public class MaterialDetailActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.material_detail_activity);
+		setTitle("物料备件");
 		
 		materialTypeService = (MaterialTypeService)BeanFactory.getInstance().getBean(MaterialTypeService.class);
 		materialService = (MaterialService) BeanFactory.getInstance().getBean(MaterialService.class);

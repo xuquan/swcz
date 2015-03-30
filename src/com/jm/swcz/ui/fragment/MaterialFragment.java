@@ -53,7 +53,7 @@ public class MaterialFragment extends ListFragment {
 		fm = getFragmentManager();
 		materialService = (MaterialService) BeanFactory.getInstance().getBean(MaterialService.class);
 		Activity activity = getActivity();
-		activity.setTitle("物料");
+		activity.setTitle("物料备件");
 		setHasOptionsMenu(true);
 	}
 	

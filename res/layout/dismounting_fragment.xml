@@ -12,7 +12,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="24dp"
-        android:text="安装喷油器" />
+        android:text="喷油器组装过程演示" />
 
     <Button
         android:id="@+id/btn_cpyb"
@@ -22,17 +22,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/btn_apyq"
         android:layout_marginTop="5dp"
-        android:text="拆喷油泵" />
-    
-    <Button
-        android:id="@+id/btn_cpyq"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/btn_cpyb"
-        android:layout_marginTop="5dp"
-        android:text="拆喷油器" />
+        android:text="喷油器拆装过程演示" />
     
     <Button
         android:id="@+id/btn_azpyb"
@@ -40,7 +30,18 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/btn_cpyq"
+        android:layout_below="@+id/btn_cpyb"
         android:layout_marginTop="5dp"
-        android:text="安装喷油泵" />
+        android:text="高压油泵组装过程演示" />
+    
+    <Button
+        android:id="@+id/btn_cpyq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/btn_azpyb"
+        android:layout_marginTop="5dp"
+        android:text="高压油泵拆装过程演示" />
+    
 </RelativeLayout>

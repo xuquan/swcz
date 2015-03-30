@@ -101,9 +101,9 @@ public final class R {
         public static final int action_bar_del=0x7f060093;
         public static final int action_settings=0x7f060094;
         public static final int btn_apyq=0x7f060020;
-        public static final int btn_azpyb=0x7f060023;
+        public static final int btn_azpyb=0x7f060022;
         public static final int btn_cpyb=0x7f060021;
-        public static final int btn_cpyq=0x7f060022;
+        public static final int btn_cpyq=0x7f060023;
         public static final int btn_fault=0x7f060089;
         public static final int btn_fault_reason=0x7f06008a;
         public static final int btn_login=0x7f060034;

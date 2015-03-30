@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,9 +20,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
+import android.widget.RadioGroup;
 import android.widget.SimpleAdapter;
 
 import com.jm.swcz.R;
+import com.jm.swcz.factory.FragmentFactory;
 import com.jm.swcz.ui.activity.DeptActivity;
 import com.jm.swcz.ui.activity.MaterialTypeActivity;
 import com.jm.swcz.ui.activity.MemoActivity;
@@ -56,12 +60,30 @@ public class IndexFragment extends Fragment {
 				Map<String,Object> map = (Map<String,Object>) adapter.getItem(position);
 				Integer layout = (Integer) map.get("layout");
 				Intent intent = null;
+				boolean isStartActivity = true;
+				FragmentManager fm = getFragmentManager();
+				FragmentTransaction transaction = fm.beginTransaction();
+				Fragment fragment = null;
 				switch (layout) {
 				case R.layout.dept_activity:
 					intent = new Intent(getActivity(),DeptActivity.class);
 					break;
+				case R.layout.dismounting_fragment:
+					//intent = new Intent(getActivity(),MaterialFragment.class);
+					fragment = FragmentFactory.getInstanceByIndex(2131099705);
+					transaction.replace(R.id.content, fragment);
+					transaction.commit();
+					isStartActivity = false;
+					break;
 				case R.layout.material_type_activity:
 					intent = new Intent(getActivity(),MaterialTypeActivity.class);
+					break;
+				case R.layout.decision_fragment:
+					//intent = new Intent(getActivity(),MaterialFragment.class);
+					fragment = FragmentFactory.getInstanceByIndex(2131099707);
+					transaction.replace(R.id.content, fragment);
+					transaction.commit();
+					isStartActivity = false;
 					break;
 				case R.layout.storage_activity:
 					intent = new Intent(getActivity(),StorageActivity.class);
@@ -81,7 +103,9 @@ public class IndexFragment extends Fragment {
 				default:
 					break;
 				}
-				startActivity(intent);
+				if(isStartActivity){
+					startActivity(intent);
+				}
 			}
 		});
 		return view;
@@ -101,10 +125,12 @@ public class IndexFragment extends Fragment {
 	
 	private Integer[] layouts = {
 		R.layout.dept_activity,
-		R.layout.material_type_activity,
+		R.layout.material_fragment,
 		R.layout.storage_activity,
 		R.layout.memo_activity,
-		R.layout.manual_activity
+		R.layout.manual_activity,
+		R.layout.dismounting_fragment,
+		R.layout.decision_fragment
 	};
 	
 	private Integer[] icons = {
@@ -112,11 +138,13 @@ public class IndexFragment extends Fragment {
 			R.drawable.wdgp_150_icon,
 			R.drawable.jrcs_150_icon,
 			R.drawable.yjfk_150_icon,
-			R.drawable.kfrx_150_icon
+			R.drawable.kfrx_150_icon,
+			R.drawable.yjfk_150_icon,
+			R.drawable.yjfk_150_icon
 	};
 	
 	private String[] names = {
-			"部门","物料类别","库位","备忘录","说明书"
+			"部门信息","备件/物料","存放位置","备忘录","设备说明书","设备拆装","故障决策"
 	};
 	
 }

@@ -23,7 +23,7 @@
 	    android:layout_toLeftOf="@+id/imageView"
 	    android:layout_toRightOf="@+id/iv_fault"
 	    android:gravity="center_vertical"
-	    android:textColor="#FFFFFFFF"
+	    android:textColor="#000000"
 	    android:textSize="16sp" />
 
     <ImageView
