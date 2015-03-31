@@ -50,7 +50,7 @@ public class DecisionDao{
 
 	public List<Decision> findDecisionList() {
 		List<Decision> list = null;
-		String sql = "select t1.* from t_decision t1";
+		String sql = "select t1.* from t_decision t1 order by t1.proportion desc";
 		list = dbMgr.queryMultiCursor(sql, null, Decision.class);
 		return list;
 	}

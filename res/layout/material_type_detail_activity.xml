@@ -22,14 +22,14 @@
 			        android:layout_weight="1"
 			        android:gravity="right|center_vertical"
 			        android:text="类别名称:"
-			        android:textSize="14sp" />
+			        android:textSize="16sp" />
 			    <EditText
 			        android:id="@+id/et_material_type_name"
 			        android:layout_width="0dp"
 			        android:layout_height="fill_parent"
 			        android:layout_weight="4"
 			        android:textColor="#000000"
-			        android:textSize="12sp" />
+			        android:textSize="16sp" />
 			</TableRow>
 			
 		    <TableRow
@@ -42,14 +42,14 @@
 			        android:layout_weight="1"
 			        android:gravity="right|center_vertical"
 			        android:text="备注:"
-			        android:textSize="14sp" />
+			        android:textSize="16sp" />
 			    <EditText
 			        android:id="@+id/et_remark"
 			        android:layout_width="0dp"
 			        android:layout_height="40dp"
 			        android:layout_weight="4"
 			        android:textColor="#000000"
-			        android:textSize="12sp" />
+			        android:textSize="16sp" />
 		    </TableRow>
 		    
 		    <TableRow
@@ -63,14 +63,14 @@
 				        android:gravity="right|center_vertical"
 				        android:editable="false"
 				        android:text="操作者:"
-				        android:textSize="14sp" />
+				        android:textSize="16sp" />
 				    <EditText
 				        android:id="@+id/et_username"
 				        android:layout_width="0dp"
 				        android:layout_height="40dp"
 				        android:layout_weight="4"
 				        android:textColor="#000000"
-				        android:textSize="12sp" />
+				        android:textSize="16sp" />
 	        </TableRow>
 			<TableRow
 		        android:layout_width="fill_parent"
@@ -82,7 +82,7 @@
 			        android:layout_weight="1"
 			        android:gravity="right|center_vertical"
 			        android:text="操作日期:"
-			        android:textSize="14sp" />
+			        android:textSize="16sp" />
 			    <EditText
 			        android:id="@+id/et_operate_time"
 			        android:layout_width="0dp"
@@ -90,7 +90,7 @@
 			        android:layout_weight="4"
 			        android:editable="false"
 			        android:textColor="#000000"
-			        android:textSize="12sp" />
+			        android:textSize="16sp" />
 			 </TableRow>
 			 
 			<TableRow

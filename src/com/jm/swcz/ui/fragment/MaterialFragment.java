@@ -111,7 +111,7 @@ public class MaterialFragment extends ListFragment {
 				List<Material> foundMaterialList = new ArrayList<Material>();
 				if(TextUtils.isEmpty(newText)){
 					if(materialList!=null && materialList.size()>0){
-						foundMaterialList.addAll(materialList);
+						//foundMaterialList.addAll(materialList);
 					}
 				}else{
 					if(materialList!=null && materialList.size()>0){

@@ -22,14 +22,14 @@
 			        android:layout_weight="2"
 			        android:gravity="right|center_vertical"
 			        android:text="故障现象1:"
-			        android:textSize="14sp" />
+			        android:textSize="16sp" />
 			    <Spinner
 			        android:id="@+id/sp_fault"
 			        android:layout_width="0dp"
 			        android:layout_height="40dp"
 			        android:layout_weight="5" 
 			        android:textColor="#000000"
-			        android:textSize="12sp"/>
+			        android:textSize="16sp"/>
 			</TableRow>
 			
             <TableRow
@@ -42,14 +42,14 @@
 			        android:layout_weight="2"
 			        android:gravity="right|center_vertical"
 			        android:text="故障级别1:"
-			        android:textSize="14sp" />
+			        android:textSize="16sp" />
 			    <Spinner
 			        android:id="@+id/sp_fault_level"
 			        android:layout_width="0dp"
 			        android:layout_height="40dp"
 			        android:layout_weight="5" 
 			        android:textColor="#000000"
-			        android:textSize="12sp"/>
+			        android:textSize="16sp"/>
 		    </TableRow>
 			
             <TableRow
@@ -62,14 +62,14 @@
 			        android:layout_weight="2"
 			        android:gravity="right|center_vertical"
 			        android:text="故障现象2:"
-			        android:textSize="14sp" />
+			        android:textSize="16sp" />
 			    <Spinner
 			        android:id="@+id/sp_fault2"
 			        android:layout_width="0dp"
 			        android:layout_height="40dp"
 			        android:layout_weight="5" 
 			        android:textColor="#000000"
-			        android:textSize="12sp"/>
+			        android:textSize="16sp"/>
 			</TableRow>
 			
 		    <TableRow
@@ -82,14 +82,14 @@
 			        android:layout_weight="2"
 			        android:gravity="right|center_vertical"
 			        android:text="故障级别2:"
-			        android:textSize="14sp" />
+			        android:textSize="16sp" />
 			    <Spinner
 			        android:id="@+id/sp_fault_level2"
 			        android:layout_width="0dp"
 			        android:layout_height="40dp"
 			        android:layout_weight="5" 
 			        android:textColor="#000000"
-			        android:textSize="12sp"/>
+			        android:textSize="16sp"/>
 		    </TableRow>
 		    
 		    <TableRow
@@ -102,14 +102,14 @@
 				        android:layout_weight="2"
 				        android:gravity="right|center_vertical"
 				        android:text="故障原因:"
-				        android:textSize="14sp" />
+				        android:textSize="16sp" />
 				 <Spinner
 			        android:id="@+id/sp_fault_reason"
 			        android:layout_width="0dp"
 			        android:layout_height="40dp"
 			        android:layout_weight="5" 
 			        android:textColor="#000000"
-			        android:textSize="12sp"/>   
+			        android:textSize="16sp"/>   
 	        </TableRow>
 			<TableRow
 		        android:layout_width="fill_parent"
@@ -121,14 +121,14 @@
 			        android:layout_weight="2"
 			        android:gravity="right|center_vertical"
 			        android:text="占比(%):"
-			        android:textSize="14sp"/>
+			        android:textSize="16sp"/>
 			    <EditText
 			        android:id="@+id/et_proportion"
 			        android:layout_width="0dp"
 			        android:layout_height="40dp"
 			        android:layout_weight="5"
 			        android:textColor="#000000"
-			        android:textSize="12sp"
+			        android:textSize="16sp"
 			        android:inputType="numberDecimal"/>
 			 </TableRow>
 			 
